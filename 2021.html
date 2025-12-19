@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición 2021 - ERIZO AWARDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .winners-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        .award-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #222;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .award-row:last-child { border-bottom: none; }
+        
+        .award-row:hover {
+            background: rgba(191, 149, 63, 0.1);
+        }
 
+        .award-row.active {
+            background: var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            z-index: 5;
+        }
+
+        .award-row.active .category, 
+        .award-row.active .winner,
+        .award-row.active .winner a {
+            color: #000 !important;
+            font-weight: 800;
+        }
+
+        .category {
+            color: var(--gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            flex: 1;
+            padding-right: 15px;
+        }
+        .winner {
+            text-align: right;
+            font-size: 1.1rem;
+            flex: 1.2;
+            font-weight: 600;
+        }
+        /* Estilo para el link de la respuesta */
+        .winner a {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: 0.3s;
+        }
+        .winner a:hover {
+            color: var(--gold);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header style="height: 40vh;">
+        <h1 class="gold-text">2021</h1>
+        <p class="subtitle">Cuarta Edición</p>
+    </header>
+
+    <div class="winners-page">
+        <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
+        
+        <div class="table-container">
+            <div class="award-row"><div class="category">Mejor creador de mapas</div><div class="winner">Vhagar</div></div>
+            <div class="award-row"><div class="category">Más odiado (que no está en el grupo grupo)</div><div class="winner">Savant</div></div>
+            <div class="award-row"><div class="category">Más odiado</div><div class="winner">Lomelino</div></div>
+            <div class="award-row"><div class="category">F Moment</div><div class="winner">Icardi, le robaron el celular en festejos de la Copa América</div></div>
+            <div class="award-row"><div class="category">Más lindo del grupo</div><div class="winner">Ayovi</div></div>
+            <div class="award-row"><div class="category">Más depresivo</div><div class="winner">Rusito Assad</div></div>
+            <div class="award-row"><div class="category">Mejor jugador de PES 6</div><div class="winner">Morro</div></div>
+            
+            <div class="award-row">
+                <div class="category">Respuesta del año</div>
+                <div class="winner">
+                    <a href="https://lh7-rt.googleusercontent.com/formsz/AN7BsVCniI-cVrATjTzS934Z68BRUvQrTWFyRZg1ixfPN8ZYnUwfst0nO_URGrBE8ZGDVMfYHrmE5BHLWwpoGXt76fxfw40AZWqzWgHhvZzVrryULxYxiFDqHtx_FMcyy1YeM7lfmoI8EFx-NdjtnDX9CE-5uolaU2Y74VRXIw?key=THGMWU4fL434XG4a1vXAgw" target="_blank">Kweenoflosers a Augusto</a>
+                </div>
+            </div>
+
+            <div class="award-row"><div class="category">Mejor pareja</div><div class="winner">Ayovi y Morro</div></div>
+            <div class="award-row"><div class="category">Mejor integrante nuevo</div><div class="winner">Picles</div></div>
+            <div class="award-row"><div class="category">Mensaje random del año</div><div class="winner">Ayovi a Delpo ("Tu hermana se hizo las tetas?")</div></div>
+            <div class="award-row"><div class="category">Mejor rivalidad</div><div class="winner">Kev vs. Los brazucas</div></div>
+            <div class="award-row"><div class="category">Más fantasma</div><div class="winner">Ailen</div></div>
+            <div class="award-row"><div class="category">Mejor jugador de Haxball</div><div class="winner">Kaka</div></div>
+            <div class="award-row"><div class="category">Mejor integrante del año</div><div class="winner">Kev</div></div>
+        </div>
+    </div>
+
+    <script>
+        const rows = document.querySelectorAll('.award-row');
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                rows.forEach(r => r.classList.remove('active'));
+                row.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
