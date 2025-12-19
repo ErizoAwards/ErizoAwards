@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición 2024 - ERIZO AWARDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .winners-page { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+        
+        /* GANADOR PRINCIPAL */
+        .main-winner {
+            background: radial-gradient(circle, #222 0%, #0a0a0a 100%);
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 0 40px rgba(191, 149, 63, 0.3);
+        }
+        .main-img { width: 220px; height: 220px; border-radius: 15px; border: 4px solid var(--gold); object-fit: cover; margin-bottom: 20px; }
 
+        /* GRILLA PARA CATEGORÍAS CON IMAGEN */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .featured-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .featured-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card-img { width: 100%; height: 150px; border-radius: 10px; object-fit: cover; background: #222; margin-bottom: 15px; border: 1px solid #444; }
+        .card-cat { color: var(--gold); font-size: 0.75rem; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
+        .card-win { font-size: 1rem; font-weight: 600; }
+
+        /* TABLA PARA CATEGORÍAS SIN IMAGEN */
+        .table-container { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; }
+        .award-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 20px; border-bottom: 1px solid #222; cursor: pointer; transition: 0.3s;
+        }
+        .award-row.active { background: var(--gold); color: #000; font-weight: bold; transform: scale(1.01); }
+        .award-row.active .category, .award-row.active .winner { color: #000 !important; }
+        .category { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; flex: 1; }
+        .winner { text-align: right; flex: 1; }
+
+        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <header style="height: 40vh;">
+        <h1 class="gold-text">2024</h1>
+        <p class="subtitle">Ganadores de la Séptima Edición</p>
+    </header>
+
+    <div class="winners-page">
+        <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
+        
+        <div class="main-winner">
+            <p style="color:var(--gold); font-family:'Cinzel';">Mejor integrante del grupo</p>
+            <img src="https://i.postimg.cc/Gmx9kFqf/image.png" class="main-img">
+            <h2 style="font-size: 2.5rem; margin:0;">Morro</h2>
+        </div>
+
+        <h2 class="section-title" style="font-size: 1.5rem;">Ganadores con fotito hecha por JRR</h2>
+        <div class="featured-grid">
+            <div class="featured-card"><div class="card-cat">Mejor jugador de PES 6</div><img src="https://i.postimg.cc/4xsxNKXG/image.png" class="card-img"><div class="card-win">Morro</div></div>
+            <div class="featured-card"><div class="card-cat">Gasto boludo</div><img src="https://i.postimg.cc/tggRWL1f/image.png" class="card-img"><div class="card-win">Naza (Nube)</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor visita</div><img src="URL" class="card-img"><div class="card-win">Hala</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor juego</div><img src="URL" class="card-img"><div class="card-win">PES 6</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor arquero</div><img src="URL" class="card-img"><div class="card-win">Neuer</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor spam</div><img src="URL" class="card-img"><div class="card-win">Perro de Nikho</div></div>
+            <div class="featured-card"><div class="card-cat">Hincha no bover</div><img src="URL" class="card-img"><div class="card-win">Wing</div></div>
+            <div class="featured-card"><div class="card-cat">SEH al más homosexual</div><img src="URL" class="card-img"><div class="card-win">Icardi</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor pareja</div><img src="URL" class="card-img"><div class="card-win">Morro y Ayovi</div></div>
+            <div class="featured-card"><div class="card-cat">Más lindo</div><img src="URL" class="card-img"><div class="card-win">Augusto</div></div>
+            <div class="featured-card"><div class="card-cat">Más fantasma</div><img src="URL" class="card-img"><div class="card-win">Rexona</div></div>
+            <div class="featured-card"><div class="card-cat">Momento random</div><img src="URL" class="card-img"><div class="card-win">Augusto Cajero</div></div>
+            <div class="featured-card"><div class="card-cat">Más linda</div><img src="URL" class="card-img"><div class="card-win">Luciana</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor rivalidad</div><img src="URL" class="card-img"><div class="card-win">Rodri vs. Tefa</div></div>
+            <div class="featured-card"><div class="card-cat">Peor de Haxball</div><img src="URL" class="card-img"><div class="card-win">Santa Kroos</div></div>
+            <div class="featured-card"><div class="card-cat">Integrante nuevo</div><img src="URL" class="card-img"><div class="card-win">Ananá</div></div>
+            <div class="featured-card"><div class="card-cat">F Moment</div><img src="URL" class="card-img"><div class="card-win">PES United Final</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor streamer</div><img src="URL" class="card-img"><div class="card-win">Candroxz</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor de Haxball</div><img src="URL" class="card-img"><div class="card-win">Mágico</div></div>
+            <div class="featured-card"><div class="card-cat">Más odiado</div><img src="URL" class="card-img"><div class="card-win">Wing</div></div>
+            <div class="featured-card"><div class="card-cat">Mejor clip</div><img src="URL" class="card-img"><div class="card-win">Rusito preso</div></div>
+        </div>
+
+        <h2 class="section-title" style="font-size: 1.5rem;">Más ganadoresr</h2>
+        <div class="table-container">
+            <div class="award-row"><div class="category">Mejor extranjero</div><div class="winner">Retoriko</div></div>
+            <div class="award-row"><div class="category">Mejor personaje SAMP</div><div class="winner">Mochilero Assad</div></div>
+            <div class="award-row"><div class="category">Pajerazo</div><div class="winner">Santa Kroos</div></div>
+            <div class="award-row"><div class="category">Más depresivo</div><div class="winner">Santa Kroos</div></div>
+            <div class="award-row"><div class="category">Peor evento</div><div class="winner">Liga RS Bolivia</div></div>
+            <div class="award-row"><div class="category">Mejor fichaje</div><div class="winner">Mágico a PES/SEH</div></div>
+            <div class="award-row"><div class="category">Más querido (fuera)</div><div class="winner">Pedrinho y Nestorvive</div></div>
+            <div class="award-row"><div class="category">Más odiado (fuera)</div><div class="winner">Lanzini</div></div>
+            <div class="award-row"><div class="category">Mejor artista</div><div class="winner">Escopeta</div></div>
+            <div class="award-row"><div class="category">Mufasa</div><div class="winner">Kev</div></div>
+            <div class="award-row"><div class="category">Mejor comida</div><div class="winner">Sanguche</div></div>
+            <div class="award-row"><div class="category">Erizo consuelo</div><div class="winner">JRR</div></div>
+        </div>
+    </div>
+
+    <script>
+        const rows = document.querySelectorAll('.award-row');
+        rows.forEach(row => { row.addEventListener('click', () => { rows.forEach(r => r.classList.remove('active')); row.classList.add('active'); }); });
+    </script>
+</body>
+</html>
