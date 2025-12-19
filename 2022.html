@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición 2022 - ERIZO AWARDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .winners-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        .award-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #222;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .award-row:last-child { border-bottom: none; }
+        
+        .award-row:hover {
+            background: rgba(191, 149, 63, 0.1);
+        }
 
+        .award-row.active {
+            background: var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            z-index: 5;
+        }
+
+        .award-row.active .category, 
+        .award-row.active .winner {
+            color: #000 !important;
+            font-weight: 800;
+        }
+
+        .category {
+            color: var(--gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            flex: 1;
+            padding-right: 15px;
+        }
+        .winner {
+            text-align: right;
+            font-size: 1.1rem;
+            flex: 1.3;
+            font-weight: 600;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header style="height: 40vh;">
+        <h1 class="gold-text">2022</h1>
+        <p class="subtitle">Ganadores de la Quinta Edición</p>
+    </header>
+
+    <div class="winners-page">
+        <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
+        
+        <div class="table-container">
+            <div class="award-row"><div class="category">Mejor comida del año</div><div class="winner">Hamburguesa</div></div>
+            <div class="award-row"><div class="category">Mejor mapa de Haxball</div><div class="winner">Mundialito</div></div>
+            <div class="award-row"><div class="category">Mejor DT de OSM</div><div class="winner">Morro</div></div>
+            <div class="award-row"><div class="category">Mejor jugador de PES 6</div><div class="winner">JRR</div></div>
+            <div class="award-row"><div class="category">Mejor visita</div><div class="winner">Una angoleña</div></div>
+            <div class="award-row"><div class="category">Mejor spam</div><div class="winner">Este es puto</div></div>
+            <div class="award-row"><div class="category">F Moment</div><div class="winner">PC de Rusito rompiéndose en auge de los mundialitos</div></div>
+            <div class="award-row"><div class="category">Mejor juego ajeno a Haxball</div><div class="winner">Plato</div></div>
+            <div class="award-row"><div class="category">Gasto más boludo</div><div class="winner">Leo Godoy (Pagó Tinder Gold para matchear con travestis)</div></div>
+            <div class="award-row"><div class="category">Peor jugador de Haxball</div><div class="winner">Bruni</div></div>
+            <div class="award-row"><div class="category">Mejor hincha no Bover</div><div class="winner">Picles</div></div>
+            <div class="award-row"><div class="category">SEH al más homosexual</div><div class="winner">Icardi</div></div>
+            <div class="award-row"><div class="category">Mejor pareja</div><div class="winner">Morro y Ayovi</div></div>
+            <div class="award-row"><div class="category">Más fantasma</div><div class="winner">Rexona</div></div>
+            <div class="award-row"><div class="category">Momento random</div><div class="winner">Augusto chamuyado por la mamá de Edu</div></div>
+            <div class="award-row"><div class="category">Personalidad del año</div><div class="winner">Barquito Barquito</div></div>
+            <div class="award-row"><div class="category">Más linda</div><div class="winner">Maca</div></div>
+            <div class="award-row"><div class="category">Mejor sticker</div><div class="winner">Huevo Acuña</div></div>
+            <div class="award-row"><div class="category">Mejor rivalidad</div><div class="winner">Augusto vs. Leo Godoy</div></div>
+            <div class="award-row"><div class="category">Mejor integrante nuevo</div><div class="winner">Leo Godoy</div></div>
+            <div class="award-row"><div class="category">Domado del año</div><div class="winner">Ramma (Borro el server Tutardo tras perder contra SEH)</div></div>
+            <div class="award-row"><div class="category">Más querido (fuera)</div><div class="winner">Ben Penetron</div></div>
+            <div class="award-row"><div class="category">Mejor alterego</div><div class="winner">Kev (The Frog)</div></div>
+            <div class="award-row"><div class="category">Más odiado (que no está en el grupo)</div><div class="winner">Lomelino</div></div>
+            <div class="award-row"><div class="category">Mejor jugador de Haxball</div><div class="winner">JRR</div></div>
+            <div class="award-row"><div class="category">Más odiado</div><div class="winner">Rexona</div></div>
+            <div class="award-row"><div class="category">Mejor integrante del grupo</div><div class="winner">JRR</div></div>
+        </div>
+    </div>
+
+    <script>
+        const rows = document.querySelectorAll('.award-row');
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                rows.forEach(r => r.classList.remove('active'));
+                row.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
