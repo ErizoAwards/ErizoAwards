@@ -25,8 +25,30 @@
             align-items: center;
             padding: 20px;
             border-bottom: 1px solid #222;
+            transition: all 0.3s ease;
+            cursor: pointer; /* Indica que se puede hacer clic */
         }
         .award-row:last-child { border-bottom: none; }
+        
+        /* EFECTO HOVER (AL PASAR EL MOUSE) */
+        .award-row:hover {
+            background: rgba(191, 149, 63, 0.1);
+        }
+
+        /* EFECTO RESALTADO (AL SELECCIONAR) */
+        .award-row.active {
+            background: var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            z-index: 5;
+        }
+
+        .award-row.active .category, 
+        .award-row.active .winner {
+            color: #000 !important;
+            font-weight: 800;
+        }
+
         .category {
             color: var(--gold);
             font-weight: bold;
@@ -35,12 +57,14 @@
             letter-spacing: 1px;
             flex: 1;
             padding-right: 15px;
+            transition: 0.3s;
         }
         .winner {
             text-align: right;
             font-size: 1.1rem;
             flex: 1;
             font-weight: 600;
+            transition: 0.3s;
         }
         .back-btn {
             display: inline-block;
@@ -68,14 +92,14 @@
     <div class="winners-page">
         <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
         
-        <div class="table-container">
-            <div class="award-row"><div class="category">Gasto más boludo</div><div class="winner">Icardi yendo a ver una competencia de freestyle</div></div>
+        <div class="table-container" id="winnersTable">
+            <div class="award-row"><div class="category">Gasto más boludo</div><div class="winner">Icardi yendo a ver freestyle</div></div>
             <div class="award-row"><div class="category">Juego/App del año</div><div class="winner">Plato</div></div>
             <div class="award-row"><div class="category">Mejor diseñador</div><div class="winner">JRR (CARS, H Designs)</div></div>
             <div class="award-row"><div class="category">Mejor faceapp</div><div class="winner">Zeta anciana</div></div>
             <div class="award-row"><div class="category">Más lindo</div><div class="winner">Podolski</div></div>
             <div class="award-row"><div class="category">Mejor pareja</div><div class="winner">Icardi & Rusito ♥</div></div>
-            <div class="award-row"><div class="category">F Moment</div><div class="winner">Romario (Faltó al colegio nocturno para perder un ofi por DF)</div></div>
+            <div class="award-row"><div class="category">F Moment</div><div class="winner">Romario (Faltar al colegio/DF en Ofi)</div></div>
             <div class="award-row"><div class="category">Mejor rivalidad</div><div class="winner">JRR vs. ZETA</div></div>
             <div class="award-row"><div class="category">Agresión liviana</div><div class="winner">Maggie Greene ("Cara de llama" a Coco)</div></div>
             <div class="award-row"><div class="category">Mejor jugador Brawl Stars</div><div class="winner">Rusito</div></div>
@@ -83,7 +107,7 @@
             <div class="award-row"><div class="category">Fantasma del año</div><div class="winner">Diego Noblega (Rexona)</div></div>
             <div class="award-row"><div class="category">Más querido (fuera)</div><div class="winner">La novia de Podo</div></div>
             <div class="award-row"><div class="category">Debate del año</div><div class="winner">Elecciones presidenciales</div></div>
-            <div class="award-row"><div class="category">Momento bizarro del año</div><div class="winner">Zeta testimonio sexual con la madre de JRR/ Saludo alto guiso</div></div>
+            <div class="award-row"><div class="category">Momento bizarro del año</div><div class="winner">Zeta testimonio / Saludo alto guiso</div></div>
             <div class="award-row"><div class="category">Mejor jugador PES 6</div><div class="winner">Morro</div></div>
             <div class="award-row"><div class="category">Mejor invasión a grupos</div><div class="winner">La fiesta de disfraces</div></div>
             <div class="award-row"><div class="category">Domado del año</div><div class="winner">Romario por SeH y LNC</div></div>
@@ -94,8 +118,21 @@
             <div class="award-row"><div class="category">Mejor fantasma/retirado RS</div><div class="winner">Ayovi</div></div>
             <div class="award-row"><div class="category">Mejor jugador activo RS</div><div class="winner">Kev</div></div>
             <div class="award-row"><div class="category">Más odiado</div><div class="winner">Zeta</div></div>
-            <div class="award-row"><div class="category">Mejor integrante del grupo</div><div class="winner">Podolski y Morro</div></div>
+            <div class="award-row"><div class="category">Mejor miembro del grupo</div><div class="winner">Podolski y Morro</div></div>
         </div>
     </div>
+
+    <script>
+        const rows = document.querySelectorAll('.award-row');
+
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                // Quitar el resaltado de cualquier otra fila
+                rows.forEach(r => r.classList.remove('active'));
+                // Añadir resaltado a la fila clickeada
+                row.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
