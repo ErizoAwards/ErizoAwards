@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERIZO AWARDS 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #bf953f;
+            --gold-gradient: linear-gradient(to bottom, #cf9d3e, #ffefbb, #bf953f, #fcf6ba, #b38728);
+            --dark: #0a0a0a;
+            --card-bg: #161616;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .gold-text {
+            font-family: 'Cinzel', serif;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--gold);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* NAVEGACIÓN ANCHORS */
+        .nav-years {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-years a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-years a:hover { color: var(--gold); }
+
+        /* SECCIONES */
+        section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        /* VOTACIÓN 2025 */
+        .vote-container {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 50px rgba(191, 149, 63, 0.3);
+        }
+
+        iframe { width: 100%; height: 900px; border: none; }
+
+        /* GRILLA HISTORIAL */
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .year-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .year-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        .year-card h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .winner-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            margin-bottom: 20px;
+            object-fit: cover;
+            background: #222;
+        }
+
+        .winner-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            color: #444;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 600px) {
+            .nav-years { gap: 8px; }
+            iframe { height: 700px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="gold-text">ERIZO AWARDS</h1>
+        <p class="subtitle">La Gala de la Comunidad</p>
+    </header>
+
+    <nav class="nav-years">
+        <a href="#vota2025">VOTAR 2025</a>
+        <a href="#historial">GANADORES HISTÓRICOS</a>
+    </nav>
+
+    <section id="vota2025">
+        <h2 class="section-title">EDICIÓN 2025</h2>
+        <div class="vote-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd40treh-XV47xIgHWSs0PZFeOmBfBJ-PybCDmCrDlRYoQ6lw/viewform?embedded=true">Cargando…</iframe>
+        </div>
+    </section>
+
+    <section id="historial">
+        <h2 class="section-title">ERIZOS DE ORO AL MEJOR INTEGRANTE</h2>
+        <div class="history-grid">
+            
+            <div class="year-card">
+                <img src="URL_IMAGEN_MORRO" class="winner-img" alt="Morro">
+                <h3>2024</h3>
+                <div class="winner-name">MORRO</div>
+            </div>
+
+            <div class="year-card">
+                <img src="URL_IMAGEN_KEV" class="winner-img" alt="Kev">
+                <h3>2023</h3>
+                <div class="winner-name">KEV</div>
+            </div>
+
+            <div class="year-card">
+                <img src="URL_IMAGEN_JRR" class="winner-img" alt="JRR">
+                <h3>2022</h3>
+                <div class="winner-name">RAMÓN JRR10 (H)</div>
+            </div>
+
+            <div class="year-card">
+                <img src="URL_IMAGEN_KEV" class="winner-img" alt="Kev">
+                <h3>2021</h3>
+                <div class="winner-name">KEV</div>
+            </div>
+
+            <div class="year-card">
+                <img src="URL_IMAGEN_JRR" class="winner-img" alt="JRR">
+                <h3>2020</h3>
+                <div class="winner-name">RAMÓN JRR10 (H)</div>
+            </div>
+
+            <div class="year-card">
+                <img src="URL_IMAGEN_PODO" class="winner-img" alt="Podo Morro">
+                <h3>2019</h3>
+                <div class="winner-name">PODOLSKI & MORRO</div>
+            </div>
+
+            <div class="year-card">
+                <img src="URL_IMAGEN_MORRO" class="winner-img" alt="Morro">
+                <h3>2018</h3>
+                <div class="winner-name">MORRO</div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 ERIZO AWARDS OFFICIAL SITE
+    </footer>
+
+</body>
+</html>
