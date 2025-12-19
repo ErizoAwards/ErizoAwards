@@ -24,7 +24,7 @@
 
         /* HEADER */
         header {
-            height: 60vh;
+            height: 65vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -47,127 +47,125 @@
 
         .subtitle {
             color: var(--gold);
-            letter-spacing: 5px;
-            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-top: 20px;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            text-transform: uppercase;
         }
 
-        /* NAVEGACIÓN ANCHORS */
-        .nav-years {
+        /* NAVEGACIÓN Y MENÚ DESPLEGABLE */
+        .nav-bar {
             position: sticky;
             top: 0;
             background: rgba(10, 10, 10, 0.95);
             padding: 15px;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
             z-index: 1000;
             border-bottom: 1px solid #333;
         }
 
-        .nav-years a {
-            color: #888;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
 
-        .nav-years a:hover { color: var(--gold); }
+        .dropbtn {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 10px 20px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1a1a1a;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            z-index: 1;
+            border: 1px solid var(--gold);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover { background-color: var(--gold); color: black; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* MÚSICA */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+
+        #musicBtn {
+            background: var(--gold);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 0 15px var(--gold);
+        }
 
         /* SECCIONES */
-        section {
-            padding: 100px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        .section-title { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-
-        /* VOTACIÓN 2025 */
-        .vote-container {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 50px rgba(191, 149, 63, 0.3);
-        }
-
+        .vote-container { background: #fff; border-radius: 20px; overflow: hidden; border: 3px solid var(--gold); }
         iframe { width: 100%; height: 900px; border: none; }
 
-        /* GRILLA HISTORIAL */
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+        .history-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .year-card { background: var(--card-bg); border: 1px solid #222; border-radius: 15px; padding: 30px; text-align: center; }
+        .winner-img { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--gold); margin-bottom: 20px; object-fit: cover; }
+        .winner-name { font-size: 1.4rem; font-weight: 600; text-transform: uppercase; }
 
-        .year-card {
-            background: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: 0.4s;
-        }
-
-        .year-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
-        }
-
-        .year-card h3 {
-            color: var(--gold);
-            font-size: 1.8rem;
-            margin: 10px 0;
-        }
-
-        .winner-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            margin-bottom: 20px;
-            object-fit: cover;
-            background: #222;
-        }
-
-        .winner-name {
-            font-size: 1.4rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        footer {
-            padding: 50px;
-            text-align: center;
-            color: #444;
-            border-top: 1px solid #222;
-        }
-
-        @media (max-width: 600px) {
-            .nav-years { gap: 8px; }
-            iframe { height: 700px; }
-        }
     </style>
 </head>
 <body>
 
+    <div class="music-player">
+        <audio id="bgMusic" loop>
+            <source src="URL_DE_TU_MUSICA.mp3" type="audio/mpeg">
+        </audio>
+        <button id="musicBtn" onclick="toggleMusic()">🎵</button>
+    </div>
+
     <header>
         <h1 class="gold-text">ERIZO AWARDS</h1>
-        <p class="subtitle">La Gala de la Comunidad</p>
+        <p class="subtitle">Los mejores premios de la historia</p>
     </header>
 
-    <nav class="nav-years">
-        <a href="#vota2025">VOTAR 2025</a>
-        <a href="#historial">GANADORES HISTÓRICOS</a>
+    <nav class="nav-bar">
+        <div class="dropdown">
+            <button class="dropbtn">Ganadores Históricos ▼</button>
+            <div class="dropdown-content">
+                <a href="#vota2025">2025 (Votar)</a>
+                <a href="#y2024">2024</a>
+                <a href="#y2023">2023</a>
+                <a href="#y2022">2022</a>
+                <a href="#y2021">2021</a>
+                <a href="#y2020">2020</a>
+                <a href="#y2019">2019</a>
+                <a href="#y2018">2018</a>
+            </div>
+        </div>
     </nav>
 
     <section id="vota2025">
@@ -178,57 +176,32 @@
     </section>
 
     <section id="historial">
-        <h2 class="section-title">ERIZOS DE ORO AL MEJOR INTEGRANTE</h2>
+        <h2 class="section-title">SALÓN DE LA FAMA</h2>
         <div class="history-grid">
-            
-            <div class="year-card">
-                <img src="URL_IMAGEN_MORRO" class="winner-img" alt="Morro">
-                <h3>2024</h3>
-                <div class="winner-name">MORRO</div>
-            </div>
-
-            <div class="year-card">
-                <img src="URL_IMAGEN_KEV" class="winner-img" alt="Kev">
-                <h3>2023</h3>
-                <div class="winner-name">KEV</div>
-            </div>
-
-            <div class="year-card">
-                <img src="URL_IMAGEN_JRR" class="winner-img" alt="JRR">
-                <h3>2022</h3>
-                <div class="winner-name">RAMÓN JRR10 (H)</div>
-            </div>
-
-            <div class="year-card">
-                <img src="URL_IMAGEN_KEV" class="winner-img" alt="Kev">
-                <h3>2021</h3>
-                <div class="winner-name">KEV</div>
-            </div>
-
-            <div class="year-card">
-                <img src="URL_IMAGEN_JRR" class="winner-img" alt="JRR">
-                <h3>2020</h3>
-                <div class="winner-name">RAMÓN JRR10 (H)</div>
-            </div>
-
-            <div class="year-card">
-                <img src="URL_IMAGEN_PODO" class="winner-img" alt="Podo Morro">
-                <h3>2019</h3>
-                <div class="winner-name">PODOLSKI & MORRO</div>
-            </div>
-
-            <div class="year-card">
-                <img src="URL_IMAGEN_MORRO" class="winner-img" alt="Morro">
-                <h3>2018</h3>
-                <div class="winner-name">MORRO</div>
-            </div>
-
+            <div class="year-card" id="y2024"><img src="URL_MORRO" class="winner-img"><h3>2024</h3><div class="winner-name">MORRO</div></div>
+            <div class="year-card" id="y2023"><img src="URL_KEV" class="winner-img"><h3>2023</h3><div class="winner-name">KEV</div></div>
+            <div class="year-card" id="y2022"><img src="URL_JRR" class="winner-img"><h3>2022</h3><div class="winner-name">RAMÓN JRR10 (H)</div></div>
+            <div class="year-card" id="y2021"><img src="URL_KEV" class="winner-img"><h3>2021</h3><div class="winner-name">KEV</div></div>
+            <div class="year-card" id="y2020"><img src="URL_JRR" class="winner-img"><h3>2020</h3><div class="winner-name">RAMÓN JRR10 (H)</div></div>
+            <div class="year-card" id="y2019"><img src="URL_PODO" class="winner-img"><h3>2019</h3><div class="winner-name">PODOLSKI & MORRO</div></div>
+            <div class="year-card" id="y2018"><img src="URL_MORRO" class="winner-img"><h3>2018</h3><div class="winner-name">MORRO</div></div>
         </div>
     </section>
 
-    <footer>
-        &copy; 2025 ERIZO AWARDS OFFICIAL SITE
-    </footer>
-
+    <script>
+        function toggleMusic() {
+            var music = document.getElementById("bgMusic");
+            var btn = document.getElementById("musicBtn");
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "⏸️";
+                btn.style.boxShadow = "0 0 25px #00ff00";
+            } else {
+                music.pause();
+                btn.innerHTML = "🎵";
+                btn.style.boxShadow = "0 0 15px var(--gold)";
+            }
+        }
+    </script>
 </body>
 </html>
