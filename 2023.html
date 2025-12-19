@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición 2023 - ERIZO AWARDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .winners-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
 
+        /* CUADRO ESPECIAL CON FOTO */
+        .featured-winner {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(191, 149, 63, 0.2);
+        }
+        .featured-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 15px; /* Formato cuadro */
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            margin-bottom: 15px;
+            background: #222;
+        }
+        .featured-title {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .featured-name {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .award-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            border-bottom: 1px solid #222;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .award-row:last-child { border-bottom: none; }
+        .award-row:hover { background: rgba(191, 149, 63, 0.1); }
+
+        .award-row.active {
+            background: var(--gold);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            z-index: 5;
+        }
+        .award-row.active .category, 
+        .award-row.active .winner {
+            color: #000 !important;
+            font-weight: 800;
+        }
+
+        .category {
+            color: var(--gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            flex: 1;
+        }
+        .winner {
+            text-align: right;
+            font-size: 1.05rem;
+            flex: 1.2;
+            font-weight: 600;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header style="height: 40vh;">
+        <h1 class="gold-text">2023</h1>
+        <p class="subtitle">Sexta Edición</p>
+    </header>
+
+    <div class="winners-page">
+        <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
+        
+        <div class="featured-winner">
+            <p class="featured-title">Mejor spam</p>
+            <img src="https://i.postimg.cc/4dF8LhN2/unnamed.jpg" class="featured-img" alt="Gonzalo Craig">
+            <div class="featured-name">La foto de Gonzalo Craig</div>
+        </div>
+
+        <div class="table-container">
+            <div class="award-row"><div class="category">Gasto más boludo</div><div class="winner">Icardi comprando la carta de Charizard</div></div>
+            <div class="award-row"><div class="category">Mejor jugador de PES</div><div class="winner">Morro</div></div>
+            <div class="award-row"><div class="category">Visita del año</div><div class="winner">Pachano</div></div>
+            <div class="award-row"><div class="category">Juego ajeno a Haxball</div><div class="winner">PES 6</div></div>
+            <div class="award-row"><div class="category">Evento del año</div><div class="winner">Mundialitos</div></div>
+            <div class="award-row"><div class="category">Hincha no Bover</div><div class="winner">Wing</div></div>
+            <div class="award-row"><div class="category">Erizo SEH del año</div><div class="winner">Rusito Assad</div></div>
+            <div class="award-row"><div class="category">Pareja del año</div><div class="winner">Morro - Ayovi</div></div>
+            <div class="award-row"><div class="category">Más lindo</div><div class="winner">Hector</div></div>
+            <div class="award-row"><div class="category">Más Fantasma</div><div class="winner">Rexona</div></div>
+            <div class="award-row"><div class="category">Momento random</div><div class="winner">Quarta haciéndose pasar por mujer</div></div>
+            <div class="award-row"><div class="category">Peor jugador de Hax</div><div class="winner">Santa Kroos</div></div>
+            <div class="award-row"><div class="category">Más linda</div><div class="winner">Gise (la del emoji en el nombre)</div></div>
+            <div class="award-row"><div class="category">Rivalidad del año</div><div class="winner">Gise vs. Ailen</div></div>
+            <div class="award-row"><div class="category">Mejor integrante nuevo</div><div class="winner">Coreanito</div></div>
+            <div class="award-row"><div class="category">Más depresivo</div><div class="winner">Uvita</div></div>
+            <div class="award-row"><div class="category">Mufasa del año</div><div class="winner">Bruni</div></div>
+            <div class="award-row"><div class="category">Peor nick del año</div><div class="winner">Martin Assad</div></div>
+            <div class="award-row"><div class="category">Más odiado (fuera del grupo)</div><div class="winner">Canada</div></div>
+            <div class="award-row"><div class="category">Más querido (fuera del grupo)</div><div class="winner">Ese Ekis</div></div>
+            <div class="award-row"><div class="category">Deportista del año</div><div class="winner">Ailen</div></div>
+            <div class="award-row"><div class="category">Mejor extranjero</div><div class="winner">Hector</div></div>
+            <div class="award-row"><div class="category">F Moment</div><div class="winner">Zeta</div></div>
+            <div class="award-row"><div class="category">Más odiado del grupo</div><div class="winner">Santa Kroos</div></div>
+            <div class="award-row"><div class="category">Personaje histórico especial 5 años</div><div class="winner">Maggie Greene</div></div>
+            <div class="award-row"><div class="category">Domado del año</div><div class="winner">Boca Juniors</div></div>
+            <div class="award-row"><div class="category">Mejor jugador de Hax</div><div class="winner">JRR</div></div>
+            <div class="award-row"><div class="category">Erizo especial TOP 10 Morro</div><div class="winner">Lu</div></div>
+            <div class="award-row"><div class="category">Comida del año</div><div class="winner">Pizza</div></div>
+            <div class="award-row"><div class="category">Erizo consuelo</div><div class="winner">Delpo</div></div>
+            <div class="award-row"><div class="category">Mejor integrante del grupo</div><div class="winner">Kev</div></div>
+        </div>
+    </div>
+
+    <script>
+        const rows = document.querySelectorAll('.award-row');
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                rows.forEach(r => r.classList.remove('active'));
+                row.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
