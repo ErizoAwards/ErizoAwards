@@ -29,7 +29,7 @@
             margin-bottom: 20px; 
         }
 
-        /* GRILLA PARA CATEGORÍAS CON IMAGEN */
+        /* GRILLA PARA CATEGORÍAS */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -49,9 +49,10 @@
         }
         .featured-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         
+        /* CLASE PARA IMÁGENES Y VIDEOS */
         .card-img { 
             width: 100%; 
-            height: 200px; /* Altura ajustada */
+            height: 200px; 
             border-radius: 10px; 
             object-fit: contain; 
             background-color: #000;
@@ -119,7 +120,18 @@
             <div class="featured-card"><div class="card-cat">Mejor jugador de Haxball</div><img src="https://i.postimg.cc/MptDTQ2R/image.png" class="card-img"><div class="card-win">Mágico</div></div>
             <div class="featured-card"><div class="card-cat">Más odiado</div><img src="https://i.postimg.cc/bY23TrkG/image.png" class="card-img"><div class="card-win">Wing</div></div>
             
-            <div class="featured-card"><div class="card-cat">Mejor clip</div><img src="URL" class="card-img"><div class="card-win">Rusito preso</div></div>
+            <div class="featured-card">
+                <div class="card-cat">Mejor clip</div>
+                <iframe 
+                    class="card-img" 
+                    src="AQUI_VA_TU_LINK_DE_YOUTUBE" 
+                    title="Mejor Clip" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <div class="card-win">Rusito preso</div>
+            </div>
         </div>
 
         <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 30px;">Más ganadores</h2>
