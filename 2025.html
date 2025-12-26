@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición 2025 - ERIZO AWARDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ESTILOS ESPECÍFICOS 2025 */
+        .winners-page { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
+        
+        /* GANADOR PRINCIPAL */
+        .main-winner {
+            background: radial-gradient(circle, #222 0%, #0a0a0a 100%);
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 0 40px rgba(191, 149, 63, 0.3);
+        }
+        .main-img { 
+            width: 250px; 
+            height: 250px; 
+            border-radius: 15px; 
+            border: 4px solid var(--gold); 
+            object-fit: contain; 
+            background-color: #000;
+            margin-bottom: 20px; 
+        }
+
+        /* TÍTULOS DE SECCIÓN */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* GRILLA PARA CATEGORÍAS */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        .featured-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .featured-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        
+        /* IMÁGENES DE TARJETAS */
+        .card-img { 
+            width: 100%; 
+            height: 200px; 
+            border-radius: 10px; 
+            object-fit: cover; /* Use cover para llenar bien el espacio, o contain si son logos */
+            background-color: #000;
+            margin-bottom: 15px; 
+            border: 1px solid #444; 
+        }
+        
+        .card-cat { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; margin-bottom: 8px; min-height: 30px; display: flex; align-items: center; justify-content: center; }
+        .card-win { font-size: 1.1rem; font-weight: 600; font-family: 'Montserrat', sans-serif; color: #fff;}
+
+        /* TABLA (Por si agregas más premios de texto luego) */
+        .table-container { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; margin-top: 20px;}
+        .award-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 18px 25px; border-bottom: 1px solid #222; cursor: pointer; transition: 0.3s;
+        }
+        .award-row:last-child { border-bottom: none; }
+        .award-row.active { background: var(--gold); transform: scale(1.01); z-index: 10; }
+        .award-row.active .category, .award-row.active .winner { color: #000 !important; font-weight: 800; }
+        .category { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; flex: 1; font-weight: bold; }
+        .winner { text-align: right; flex: 1; font-size: 1rem; }
+
+        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
+        .back-btn:hover { background: var(--gold); color: black; }
+    </style>
+</head>
+<body>
+    <header style="height: 40vh;">
+        <h1 class="gold-text">2025</h1>
+        <p class="subtitle">Ganadores de la Octava Edición</p>
+    </header>
+
+    <div class="winners-page">
+        <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
+        
+        <div class="main-winner">
+            <p style="color:var(--gold); font-family:'Cinzel'; font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px;">Mejor integrante del grupo</p>
+            <img src="https://i.postimg.cc/3R0CnfyS/image.png" class="main-img" alt="Wing">
+            <h2 style="font-size: 3rem; margin:0; text-transform: uppercase;">WING</h2>
+        </div>
+
+        <h2 class="section-title">JUEGOS, EVENTOS Y TRANSMISIONES</h2>
+        
+        <div class="featured-grid">
+            <div class="featured-card">
+                <div class="card-cat">Mejor Juego</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=PLATO" class="card-img">
+                <div class="card-win">PLATO</div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Mejor Streamer</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=COREANITO" class="card-img">
+                <div class="card-win">COREANITO</div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Mejor Hatewatch</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=BOCA+vs+ALIANZA" class="card-img">
+                <div class="card-win">BOCA - ALIANZA LIMA</div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Mejor Evento</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=OLIMPIADAS" class="card-img">
+                <div class="card-win">OLIMPIADAS DE PLATO</div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Mejor Jugador de PES 6</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=AYOVI" class="card-img">
+                <div class="card-win">AYOVI</div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Prime del año</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=REAL+SOCCER" class="card-img">
+                <div class="card-win">JUSTO - ANANÁ<br><span style="font-size:0.8rem">(Real Soccer x11)</span></div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Peor Jugador de Haxball</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=AGUATERO" class="card-img">
+                <div class="card-win">AGUATERO</div>
+            </div>
+
+            <div class="featured-card">
+                <div class="card-cat">Mejor Jugador de Haxball</div>
+                <img src="https://via.placeholder.com/400x300/111/ffd700?text=JRR" class="card-img">
+                <div class="card-win">JRR</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">MÁS GANADORES</h2>
+        <div class="table-container">
+            <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
+            <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
+        </div>
+    </div>
+
+    <script>
+        const rows = document.querySelectorAll('.award-row');
+        rows.forEach(row => { 
+            row.addEventListener('click', () => { 
+                rows.forEach(r => r.classList.remove('active')); 
+                row.classList.add('active'); 
+            }); 
+        });
+    </script>
+</body>
+</html>
