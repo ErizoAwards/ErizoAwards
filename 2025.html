@@ -10,24 +10,69 @@
         /* ESTILOS ESPECÍFICOS 2025 */
         .winners-page { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
         
-        /* GANADOR PRINCIPAL */
-        .main-winner {
+        /* CONTENEDOR PRINCIPAL (FONDO) */
+        .main-winner-section {
             background: radial-gradient(circle, #222 0%, #0a0a0a 100%);
             border: 3px solid var(--gold);
             border-radius: 20px;
-            padding: 40px;
+            padding: 40px 20px;
             text-align: center;
             margin-bottom: 60px;
             box-shadow: 0 0 40px rgba(191, 149, 63, 0.3);
         }
+
+        /* TÍTULO PRINCIPAL */
+        .main-title-text {
+            color: var(--gold);
+            font-family: 'Cinzel';
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #444;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* CONTENEDOR DE LAS DOS TARJETAS */
+        .dual-winners-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap; /* Para que baje en celulares */
+        }
+
+        /* TARJETA INDIVIDUAL DE GANADOR PRINCIPAL */
+        .main-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .main-img { 
             width: 250px; 
             height: 250px; 
-            border-radius: 15px; 
+            border-radius: 50%; /* Redondas quedan mejor en duo, o cambia a 15px si prefieres cuadradas */
             border: 4px solid var(--gold); 
-            object-fit: contain; 
+            object-fit: cover; 
             background-color: #000;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .main-card:hover .main-img {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .main-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         /* --- ESTILOS DEL ACORDEÓN (MENÚ DESPLEGABLE) --- */
@@ -37,7 +82,7 @@
             cursor: pointer;
             padding: 20px;
             width: 100%;
-            text-align: center; /* Título centrado */
+            text-align: center;
             border: 1px solid #444;
             border-radius: 10px;
             outline: none;
@@ -52,13 +97,11 @@
             position: relative;
         }
 
-        /* Efecto al pasar el mouse o estar activo */
         .accordion:hover, .accordion.active {
             background-color: #333;
             border-color: var(--gold);
         }
 
-        /* Icono de flecha (▼) */
         .accordion:after {
             content: '\002B'; /* Signo más (+) */
             font-size: 1.5rem;
@@ -78,18 +121,16 @@
             background-color: transparent;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out; /* Animación suave */
+            transition: max-height 0.4s ease-out;
             margin-bottom: 20px;
         }
 
-        /* --- FIN ESTILOS ACORDEÓN --- */
-
-        /* GRILLA PARA CATEGORÍAS */
+        /* GRILLA */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-            margin-top: 20px; /* Separación del botón */
+            margin-top: 20px;
             margin-bottom: 40px;
         }
         .featured-card {
@@ -105,7 +146,6 @@
         }
         .featured-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         
-        /* IMÁGENES DE TARJETAS */
         .card-img { 
             width: 100%; 
             height: 200px; 
@@ -118,18 +158,6 @@
         
         .card-cat { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; margin-bottom: 8px; min-height: 30px; display: flex; align-items: center; justify-content: center; }
         .card-win { font-size: 1.1rem; font-weight: 600; font-family: 'Montserrat', sans-serif; color: #fff;}
-
-        /* TABLA */
-        .table-container { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; margin-top: 20px;}
-        .award-row { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 18px 25px; border-bottom: 1px solid #222; cursor: pointer; transition: 0.3s;
-        }
-        .award-row:last-child { border-bottom: none; }
-        .award-row.active { background: var(--gold); transform: scale(1.01); z-index: 10; }
-        .award-row.active .category, .award-row.active .winner { color: #000 !important; font-weight: 800; }
-        .category { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; flex: 1; font-weight: bold; }
-        .winner { text-align: right; flex: 1; font-size: 1rem; }
 
         .back-btn { display: inline-block; margin-bottom: 30px; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
         .back-btn:hover { background: var(--gold); color: black; }
@@ -144,89 +172,98 @@
     <div class="winners-page">
         <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
         
-        <div class="main-winner">
-            <p style="color:var(--gold); font-family:'Cinzel'; font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px;">Mejor integrante del grupo</p>
-            <img src="https://i.postimg.cc/fbQP0k3P/image.png" class="main-img" alt="Wing">
-            <h2 style="font-size: 3rem; margin:0; text-transform: uppercase;">WING</h2>
+        <div class="main-winner-section">
+            <p class="main-title-text">Mejores integrantes del grupo</p>
+            
+            <div class="dual-winners-container">
+                <div class="main-card">
+                    <img src="https://i.postimg.cc/fbQP0k3P/image.png" class="main-img" alt="Wing">
+                    <h2 class="main-name">WING</h2>
+                </div>
+
+                <div class="main-card">
+                    <img src="https://i.postimg.cc/kg7kGBkQ/image.png" class="main-img" alt="Maca">
+                    <h2 class="main-name">MACA</h2>
+                </div>
+            </div>
         </div>
 
         <button class="accordion">JUEGOS, EVENTOS Y TRANSMISIONES</button>
         <div class="panel">
             <div class="featured-grid">
-                <div class="featured-card">
-                    <div class="card-cat">Mejor Juego</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=PLATO" class="card-img">
-                    <div class="card-win">PLATO</div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Mejor Streamer</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=COREANITO" class="card-img">
-                    <div class="card-win">COREANITO</div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Mejor Hatewatch</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=BOCA+vs+ALIANZA" class="card-img">
-                    <div class="card-win">BOCA - ALIANZA LIMA</div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Mejor Evento</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=OLIMPIADAS" class="card-img">
-                    <div class="card-win">OLIMPIADAS DE PLATO</div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Mejor Jugador de PES 6</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=AYOVI" class="card-img">
-                    <div class="card-win">AYOVI</div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Prime del año</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=REAL+SOCCER" class="card-img">
-                    <div class="card-win">JUSTO - ANANÁ<br><span style="font-size:0.8rem">(Real Soccer x11)</span></div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Peor Jugador de Haxball</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=AGUATERO" class="card-img">
-                    <div class="card-win">AGUATERO</div>
-                </div>
-
-                <div class="featured-card">
-                    <div class="card-cat">Mejor Jugador de Haxball</div>
-                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=JRR" class="card-img">
-                    <div class="card-win">JRR</div>
-                </div>
+                <div class="featured-card"><div class="card-cat">Mejor Juego</div><img src="https://i.postimg.cc/T1XtssxV/image.png" class="card-img"><div class="card-win">PLATO</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Streamer</div><img src="https://i.postimg.cc/sg0wzxz9/image.png" class="card-img"><div class="card-win">COREANITO</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Hatewatch</div><img src="https://i.postimg.cc/zG3FxNhW/image.png" class="card-img"><div class="card-win">BOCA - ALIANZA LIMA</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Evento</div><img src="https://i.postimg.cc/sfcPyx9T/image.png" class="card-img"><div class="card-win">by ESCOPETA JOHNSON</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Jugador de PES 6</div><img src="https://i.postimg.cc/g292TqLY/image.png" class="card-img"><div class="card-win">AYOVI</div></div>
+                <div class="featured-card"><div class="card-cat">Prime del año</div><img src="https://i.postimg.cc/W3sDfmyQ/image.png" class="card-img"><div class="card-win">JUSTO - ANANÁ<br><span style="font-size:0.8rem">(Real Soccer x11)</span></div></div>
+                <div class="featured-card"><div class="card-cat">Peor Jugador de Haxball</div><img src="https://i.postimg.cc/zXvhrjfZ/image.png" class="card-img"><div class="card-win">AGUATERO</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Jugador de Haxball</div><img src="https://i.postimg.cc/tgNJPZTj/image.png" class="card-img"><div class="card-win">JRR</div></div>
             </div>
         </div>
 
-        <button class="accordion">MÁS GANADORES</button>
+        <button class="accordion">INFERIORES, MOMENTOS Y DEMÁS</button>
         <div class="panel">
-            <div class="table-container">
-                <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
-                <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
+            <div class="featured-grid">
+                <div class="featured-card"><div class="card-cat">Mejor integrante nuevo</div><img src="https://i.postimg.cc/853SrNLX/image.png" class="card-img"><div class="card-win">JULIETA</div></div>
+                <div class="featured-card"><div class="card-cat">Erizo del futuro</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=CAMIPAS" class="card-img"><div class="card-win">CAMIPAS</div></div>
+                <div class="featured-card"><div class="card-cat">Visita del Año</div><img src="https://i.postimg.cc/QtRMZpYV/image.png" class="card-img"><div class="card-win" style="font-size: 0.9rem;">LA CHILENA EN SILLA DE RUEDAS</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Extranjero</div><img src="https://i.postimg.cc/fbSnn1Gy/image.png" class="card-img"><div class="card-win">RETORIKO</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Mascota</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=HANNA" class="card-img"><div class="card-win">HANNA (DE ANANÁ)</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Hincha NO Bover</div><img src="https://i.postimg.cc/Jz2VFR20/image.png" class="card-img"><div class="card-win">AYOVÍ</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Negro</div><img src="https://i.postimg.cc/XYzSPnDR/image.png" class="card-img"><div class="card-win">SEGUNDO CASTILLO</div></div>
+                <div class="featured-card"><div class="card-cat">Momento Random</div><img src="https://i.postimg.cc/0QmsmhZP/image.png" class="card-img"><div class="card-win">ANANÁ EN LOS 8 ESCALONES</div></div>
+                <div class="featured-card"><div class="card-cat">F Moment</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=F+MOMENT" class="card-img"><div class="card-win" style="font-size: 0.8rem;">AYOVI DESCENDIÓ GODOY CRUZ Y CAMPEÓN IND. RIVADAVIA</div></div>
+                <div class="featured-card"><div class="card-cat">Momento Incomodo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MAURIPAL+VS+CARO" class="card-img"><div class="card-win" style="font-size: 0.8rem;">MAURIPAL DICIENDOLE A CARO QUE HAY QUE MATARLA</div></div>
+                <div class="featured-card"><div class="card-cat">Mensaje Random</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=NAHIR+CASAMIENTO" class="card-img"><div class="card-win" style="font-size: 0.8rem;">NAHIR: "NO DA IR DE TOP A UN CASAMIENTO CIERTO"</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Spam</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WING+ESCRIBIENDO" class="card-img"><div class="card-win">WING ESCRIBIENDO</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Respuesta</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=KEV" class="card-img"><div class="card-win">KEV</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Gordo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=HECTOR" class="card-img"><div class="card-win">HECTOR</div></div>
+                <div class="featured-card"><div class="card-cat">Erizo Nobel de la Paz</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=BRUNI" class="card-img"><div class="card-win">BRUNI</div></div>
             </div>
         </div>
+
+        <button class="accordion">PREMIOS PICANTES, ODIO Y HOMOSEXUALIDAD</button>
+        <div class="panel">
+            <div class="featured-grid">
+                <div class="featured-card"><div class="card-cat">Mejor Rivalidad</div><img src="https://i.postimg.cc/prq1nBw4/image.png" class="card-img"><div class="card-win">CARO VS. NAHIR</div></div>
+                <div class="featured-card"><div class="card-cat">Más Fantasma</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=REXONA" class="card-img"><div class="card-win">REXONA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Fisuras</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=PATO+Y+CANDE" class="card-img"><div class="card-win">PATO Y CANDE</div></div>
+                <div class="featured-card"><div class="card-cat">Erizo SEH al Más Homosexual</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=NAZA" class="card-img"><div class="card-win">NAZA</div></div>
+                <div class="featured-card"><div class="card-cat">Más odiado (No grupo)</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=ROJAS+WALEN" class="card-img"><div class="card-win">ROJAS WALEN</div></div>
+                <div class="featured-card"><div class="card-cat">Más querido (No grupo)</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WINGSITO+ASSAD" class="card-img"><div class="card-win">WINGSITO ASSAD</div></div>
+                <div class="featured-card"><div class="card-cat">Pajerazos del año</div><img src="https://i.postimg.cc/dVzNd3fs/image.png" class="card-img"><div class="card-win">JRR Y JULIETA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Autistas</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MORRO+Y+CARO" class="card-img"><div class="card-win">MORRO Y CARO</div></div>
+                <div class="featured-card"><div class="card-cat">Más Depresivo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=NAHIR" class="card-img"><div class="card-win">NAHIR</div></div>
+                <div class="featured-card"><div class="card-cat">Mufasa del año</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WING" class="card-img"><div class="card-win">WING</div></div>
+                <div class="featured-card"><div class="card-cat">Más odiado</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WING" class="card-img"><div class="card-win">WING</div></div>
+                <div class="featured-card"><div class="card-cat">Más odiada</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=CARO" class="card-img"><div class="card-win">CARO</div></div>
+            </div>
+        </div>
+
+        <button class="accordion">AMOR, CARIÑO Y RESPETO</button>
+        <div class="panel">
+            <div class="featured-grid">
+                <div class="featured-card"><div class="card-cat">Mejor Pareja</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=COREANITO+Y+JULIETA" class="card-img"><div class="card-win">COREANITO Y JULIETA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Gracioso</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MORRO" class="card-img"><div class="card-win">MORRO</div></div>
+                <div class="featured-card"><div class="card-cat">Más Graciosa</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MACA" class="card-img"><div class="card-win">MACA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Linda</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=JULIETA" class="card-img"><div class="card-win">JULIETA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Lindo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=AUGUSTO" class="card-img"><div class="card-win">AUGUSTO</div></div>
+                <div class="featured-card"><div class="card-cat">Erizo Consuelo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=RUSITO+ASSAD" class="card-img"><div class="card-win">RUSITO ASSAD</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Comida</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MILANESAS" class="card-img"><div class="card-win">MILANESAS</div></div>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        // LOGICA PARA EL ACORDEÓN
         var acc = document.getElementsByClassName("accordion");
         var i;
 
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
-                // Alternar la clase 'active' para cambiar el color y el icono
                 this.classList.toggle("active");
-                
-                // Seleccionar el panel siguiente (el div con contenido)
                 var panel = this.nextElementSibling;
-                
-                // Si ya está abierto, cerrarlo (maxHeight = null)
-                // Si está cerrado, abrirlo calculando su altura total
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
                 } else {
@@ -234,15 +271,6 @@
                 } 
             });
         }
-
-        // LOGICA PARA RESALTAR FILAS EN LA TABLA
-        const rows = document.querySelectorAll('.award-row');
-        rows.forEach(row => { 
-            row.addEventListener('click', () => { 
-                rows.forEach(r => r.classList.remove('active')); 
-                row.classList.add('active'); 
-            }); 
-        });
     </script>
 </body>
 </html>
