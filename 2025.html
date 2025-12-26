@@ -30,23 +30,67 @@
             margin-bottom: 20px; 
         }
 
-        /* TÍTULOS DE SECCIÓN */
-        .section-title {
-            font-family: 'Cinzel', serif;
+        /* --- ESTILOS DEL ACORDEÓN (MENÚ DESPLEGABLE) --- */
+        .accordion {
+            background-color: rgba(30, 30, 30, 0.8);
             color: var(--gold);
-            text-align: center;
-            margin-bottom: 40px;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            text-align: center; /* Título centrado */
+            border: 1px solid #444;
+            border-radius: 10px;
+            outline: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            transition: 0.4s;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
+
+        /* Efecto al pasar el mouse o estar activo */
+        .accordion:hover, .accordion.active {
+            background-color: #333;
+            border-color: var(--gold);
+        }
+
+        /* Icono de flecha (▼) */
+        .accordion:after {
+            content: '\002B'; /* Signo más (+) */
+            font-size: 1.5rem;
+            color: var(--gold);
+            position: absolute;
+            right: 20px;
+            font-weight: bold;
+        }
+
+        .accordion.active:after {
+            content: "\2212"; /* Signo menos (-) */
+        }
+
+        /* EL PANEL QUE SE OCULTA/MUESTRA */
+        .panel {
+            padding: 0 5px;
+            background-color: transparent;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out; /* Animación suave */
+            margin-bottom: 20px;
+        }
+
+        /* --- FIN ESTILOS ACORDEÓN --- */
 
         /* GRILLA PARA CATEGORÍAS */
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-            margin-bottom: 60px;
+            margin-top: 20px; /* Separación del botón */
+            margin-bottom: 40px;
         }
         .featured-card {
             background: var(--card-bg);
@@ -66,7 +110,7 @@
             width: 100%; 
             height: 200px; 
             border-radius: 10px; 
-            object-fit: cover; /* Use cover para llenar bien el espacio, o contain si son logos */
+            object-fit: cover; 
             background-color: #000;
             margin-bottom: 15px; 
             border: 1px solid #444; 
@@ -75,7 +119,7 @@
         .card-cat { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; margin-bottom: 8px; min-height: 30px; display: flex; align-items: center; justify-content: center; }
         .card-win { font-size: 1.1rem; font-weight: 600; font-family: 'Montserrat', sans-serif; color: #fff;}
 
-        /* TABLA (Por si agregas más premios de texto luego) */
+        /* TABLA */
         .table-container { background: var(--card-bg); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; margin-top: 20px;}
         .award-row { 
             display: flex; justify-content: space-between; align-items: center; 
@@ -106,66 +150,92 @@
             <h2 style="font-size: 3rem; margin:0; text-transform: uppercase;">WING</h2>
         </div>
 
-        <h2 class="section-title">JUEGOS, EVENTOS Y TRANSMISIONES</h2>
-        
-        <div class="featured-grid">
-            <div class="featured-card">
-                <div class="card-cat">Mejor Juego</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=PLATO" class="card-img">
-                <div class="card-win">PLATO</div>
-            </div>
+        <button class="accordion">JUEGOS, EVENTOS Y TRANSMISIONES</button>
+        <div class="panel">
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="card-cat">Mejor Juego</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=PLATO" class="card-img">
+                    <div class="card-win">PLATO</div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Mejor Streamer</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=COREANITO" class="card-img">
-                <div class="card-win">COREANITO</div>
-            </div>
+                <div class="featured-card">
+                    <div class="card-cat">Mejor Streamer</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=COREANITO" class="card-img">
+                    <div class="card-win">COREANITO</div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Mejor Hatewatch</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=BOCA+vs+ALIANZA" class="card-img">
-                <div class="card-win">BOCA - ALIANZA LIMA</div>
-            </div>
+                <div class="featured-card">
+                    <div class="card-cat">Mejor Hatewatch</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=BOCA+vs+ALIANZA" class="card-img">
+                    <div class="card-win">BOCA - ALIANZA LIMA</div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Mejor Evento</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=OLIMPIADAS" class="card-img">
-                <div class="card-win">OLIMPIADAS DE PLATO</div>
-            </div>
+                <div class="featured-card">
+                    <div class="card-cat">Mejor Evento</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=OLIMPIADAS" class="card-img">
+                    <div class="card-win">OLIMPIADAS DE PLATO</div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Mejor Jugador de PES 6</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=AYOVI" class="card-img">
-                <div class="card-win">AYOVI</div>
-            </div>
+                <div class="featured-card">
+                    <div class="card-cat">Mejor Jugador de PES 6</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=AYOVI" class="card-img">
+                    <div class="card-win">AYOVI</div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Prime del año</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=REAL+SOCCER" class="card-img">
-                <div class="card-win">JUSTO - ANANÁ<br><span style="font-size:0.8rem">(Real Soccer x11)</span></div>
-            </div>
+                <div class="featured-card">
+                    <div class="card-cat">Prime del año</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=REAL+SOCCER" class="card-img">
+                    <div class="card-win">JUSTO - ANANÁ<br><span style="font-size:0.8rem">(Real Soccer x11)</span></div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Peor Jugador de Haxball</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=AGUATERO" class="card-img">
-                <div class="card-win">AGUATERO</div>
-            </div>
+                <div class="featured-card">
+                    <div class="card-cat">Peor Jugador de Haxball</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=AGUATERO" class="card-img">
+                    <div class="card-win">AGUATERO</div>
+                </div>
 
-            <div class="featured-card">
-                <div class="card-cat">Mejor Jugador de Haxball</div>
-                <img src="https://via.placeholder.com/400x300/111/ffd700?text=JRR" class="card-img">
-                <div class="card-win">JRR</div>
+                <div class="featured-card">
+                    <div class="card-cat">Mejor Jugador de Haxball</div>
+                    <img src="https://via.placeholder.com/400x300/111/ffd700?text=JRR" class="card-img">
+                    <div class="card-win">JRR</div>
+                </div>
             </div>
         </div>
 
-        <h2 class="section-title">MÁS GANADORES</h2>
-        <div class="table-container">
-            <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
-            <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
+        <button class="accordion">MÁS GANADORES</button>
+        <div class="panel">
+            <div class="table-container">
+                <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
+                <div class="award-row"><div class="category">Categoría A definir</div><div class="winner">---</div></div>
+            </div>
         </div>
     </div>
 
     <script>
+        // LOGICA PARA EL ACORDEÓN
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Alternar la clase 'active' para cambiar el color y el icono
+                this.classList.toggle("active");
+                
+                // Seleccionar el panel siguiente (el div con contenido)
+                var panel = this.nextElementSibling;
+                
+                // Si ya está abierto, cerrarlo (maxHeight = null)
+                // Si está cerrado, abrirlo calculando su altura total
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+
+        // LOGICA PARA RESALTAR FILAS EN LA TABLA
         const rows = document.querySelectorAll('.award-row');
         rows.forEach(row => { 
             row.addEventListener('click', () => { 
