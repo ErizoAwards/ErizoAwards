@@ -38,9 +38,9 @@
         .dual-winners-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap; /* Para que baje en celulares */
+            align-items: flex-end; /* Alinea abajo para que si una es más corta queden parejas en la base */
+            gap: 40px;
+            flex-wrap: wrap; 
         }
 
         /* TARJETA INDIVIDUAL DE GANADOR PRINCIPAL */
@@ -48,21 +48,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-width: 300px;
         }
 
+        /* AJUSTE: FOTO RECTANGULAR Y COMPLETA */
         .main-img { 
-            width: 250px; 
-            height: 250px; 
-            border-radius: 50%; /* Redondas quedan mejor en duo, o cambia a 15px si prefieres cuadradas */
+            width: 260px; 
+            height: 380px; /* Altura rectangular tipo retrato */
+            border-radius: 15px; /* Bordes redondeados pero NO círculo */
             border: 4px solid var(--gold); 
-            object-fit: cover; 
+            object-fit: contain; /* Muestra la foto entera sin cortar */
             background-color: #000;
             margin-bottom: 20px;
             transition: transform 0.3s;
         }
         
         .main-card:hover .main-img {
-            transform: scale(1.05);
+            transform: scale(1.02);
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
@@ -103,7 +105,7 @@
         }
 
         .accordion:after {
-            content: '\002B'; /* Signo más (+) */
+            content: '\002B';
             font-size: 1.5rem;
             color: var(--gold);
             position: absolute;
@@ -112,10 +114,9 @@
         }
 
         .accordion.active:after {
-            content: "\2212"; /* Signo menos (-) */
+            content: "\2212";
         }
 
-        /* EL PANEL QUE SE OCULTA/MUESTRA */
         .panel {
             padding: 0 5px;
             background-color: transparent;
@@ -146,11 +147,12 @@
         }
         .featured-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         
+        /* AJUSTE: FOTOS DE CATEGORIAS COMPLETAS */
         .card-img { 
             width: 100%; 
-            height: 200px; 
+            height: 250px; /* Un poco más altas */
             border-radius: 10px; 
-            object-fit: cover; 
+            object-fit: contain; /* CLAVE: Muestra la imagen completa (con bandas negras si es necesario) */
             background-color: #000;
             margin-bottom: 15px; 
             border: 1px solid #444; 
@@ -206,17 +208,17 @@
         <div class="panel">
             <div class="featured-grid">
                 <div class="featured-card"><div class="card-cat">Mejor integrante nuevo</div><img src="https://i.postimg.cc/853SrNLX/image.png" class="card-img"><div class="card-win">JULIETA</div></div>
-                <div class="featured-card"><div class="card-cat">Erizo del futuro</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=CAMIPAS" class="card-img"><div class="card-win">CAMIPAS</div></div>
+                <div class="featured-card"><div class="card-cat">Erizo del futuro</div><img src="https://i.postimg.cc/0jwqYFfw/image.png" class="card-img"><div class="card-win">CAMIPAS</div></div>
                 <div class="featured-card"><div class="card-cat">Visita del Año</div><img src="https://i.postimg.cc/QtRMZpYV/image.png" class="card-img"><div class="card-win" style="font-size: 0.9rem;">LA CHILENA EN SILLA DE RUEDAS</div></div>
                 <div class="featured-card"><div class="card-cat">Mejor Extranjero</div><img src="https://i.postimg.cc/fbSnn1Gy/image.png" class="card-img"><div class="card-win">RETORIKO</div></div>
-                <div class="featured-card"><div class="card-cat">Mejor Mascota</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=HANNA" class="card-img"><div class="card-win">HANNA (DE ANANÁ)</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Mascota</div><img src="https://i.postimg.cc/LXfTzF7X/image.png" class="card-img"><div class="card-win">HANNA (DE ANANÁ)</div></div>
                 <div class="featured-card"><div class="card-cat">Mejor Hincha NO Bover</div><img src="https://i.postimg.cc/Jz2VFR20/image.png" class="card-img"><div class="card-win">AYOVÍ</div></div>
                 <div class="featured-card"><div class="card-cat">Mejor Negro</div><img src="https://i.postimg.cc/XYzSPnDR/image.png" class="card-img"><div class="card-win">SEGUNDO CASTILLO</div></div>
                 <div class="featured-card"><div class="card-cat">Momento Random</div><img src="https://i.postimg.cc/0QmsmhZP/image.png" class="card-img"><div class="card-win">ANANÁ EN LOS 8 ESCALONES</div></div>
-                <div class="featured-card"><div class="card-cat">F Moment</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=F+MOMENT" class="card-img"><div class="card-win" style="font-size: 0.8rem;">AYOVI DESCENDIÓ GODOY CRUZ Y CAMPEÓN IND. RIVADAVIA</div></div>
+                <div class="featured-card"><div class="card-cat">F Moment</div><img src="https://i.postimg.cc/2yQZ5ztW/image.png" class="card-img"><div class="card-win" style="font-size: 0.8rem;">AYOVI DESCENDIÓ GODOY CRUZ Y CAMPEÓN IND. RIVADAVIA</div></div>
                 <div class="featured-card"><div class="card-cat">Momento Incomodo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MAURIPAL+VS+CARO" class="card-img"><div class="card-win" style="font-size: 0.8rem;">MAURIPAL DICIENDOLE A CARO QUE HAY QUE MATARLA</div></div>
-                <div class="featured-card"><div class="card-cat">Mensaje Random</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=NAHIR+CASAMIENTO" class="card-img"><div class="card-win" style="font-size: 0.8rem;">NAHIR: "NO DA IR DE TOP A UN CASAMIENTO CIERTO"</div></div>
-                <div class="featured-card"><div class="card-cat">Mejor Spam</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WING+ESCRIBIENDO" class="card-img"><div class="card-win">WING ESCRIBIENDO</div></div>
+                <div class="featured-card"><div class="card-cat">Mensaje Random</div><img src="https://i.postimg.cc/Zqnsvg49/image.png" class="card-img"><div class="card-win" style="font-size: 0.8rem;">NAHIR: "NO DA IR DE TOP A UN CASAMIENTO CIERTO"</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Spam</div><img src="https://i.postimg.cc/DfLs6gzy/image.png" class="card-img"><div class="card-win">WING ESCRIBIENDO</div></div>
                 <div class="featured-card"><div class="card-cat">Mejor Respuesta</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=KEV" class="card-img"><div class="card-win">KEV</div></div>
                 <div class="featured-card"><div class="card-cat">Mejor Gordo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=HECTOR" class="card-img"><div class="card-win">HECTOR</div></div>
                 <div class="featured-card"><div class="card-cat">Erizo Nobel de la Paz</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=BRUNI" class="card-img"><div class="card-win">BRUNI</div></div>
@@ -227,28 +229,28 @@
         <div class="panel">
             <div class="featured-grid">
                 <div class="featured-card"><div class="card-cat">Mejor Rivalidad</div><img src="https://i.postimg.cc/prq1nBw4/image.png" class="card-img"><div class="card-win">CARO VS. NAHIR</div></div>
-                <div class="featured-card"><div class="card-cat">Más Fantasma</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=REXONA" class="card-img"><div class="card-win">REXONA</div></div>
-                <div class="featured-card"><div class="card-cat">Más Fisuras</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=PATO+Y+CANDE" class="card-img"><div class="card-win">PATO Y CANDE</div></div>
-                <div class="featured-card"><div class="card-cat">Erizo SEH al Más Homosexual</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=NAZA" class="card-img"><div class="card-win">NAZA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Fantasma</div><img src="https://i.postimg.cc/ZKmNMd9Q/image.png" class="card-img"><div class="card-win">REXONA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Fisuras</div><img src="https://i.postimg.cc/DwyX23PP/image.png" class="card-img"><div class="card-win">PATO Y CANDE</div></div>
+                <div class="featured-card"><div class="card-cat">Erizo SEH al Más Homosexual</div><img src="https://i.postimg.cc/yYTR48cD/image.png" class="card-img"><div class="card-win">NAZA</div></div>
                 <div class="featured-card"><div class="card-cat">Más odiado (No grupo)</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=ROJAS+WALEN" class="card-img"><div class="card-win">ROJAS WALEN</div></div>
                 <div class="featured-card"><div class="card-cat">Más querido (No grupo)</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WINGSITO+ASSAD" class="card-img"><div class="card-win">WINGSITO ASSAD</div></div>
                 <div class="featured-card"><div class="card-cat">Pajerazos del año</div><img src="https://i.postimg.cc/dVzNd3fs/image.png" class="card-img"><div class="card-win">JRR Y JULIETA</div></div>
-                <div class="featured-card"><div class="card-cat">Más Autistas</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MORRO+Y+CARO" class="card-img"><div class="card-win">MORRO Y CARO</div></div>
-                <div class="featured-card"><div class="card-cat">Más Depresivo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=NAHIR" class="card-img"><div class="card-win">NAHIR</div></div>
-                <div class="featured-card"><div class="card-cat">Mufasa del año</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WING" class="card-img"><div class="card-win">WING</div></div>
-                <div class="featured-card"><div class="card-cat">Más odiado</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=WING" class="card-img"><div class="card-win">WING</div></div>
-                <div class="featured-card"><div class="card-cat">Más odiada</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=CARO" class="card-img"><div class="card-win">CARO</div></div>
+                <div class="featured-card"><div class="card-cat">Más Autistas</div><img src="https://i.postimg.cc/50q4Y6xc/image.png" class="card-img"><div class="card-win">MORRO Y CARO</div></div>
+                <div class="featured-card"><div class="card-cat">Más Depresivo</div><img src="https://i.postimg.cc/pdWhsY3t/image.png" class="card-img"><div class="card-win">NAHIR</div></div>
+                <div class="featured-card"><div class="card-cat">Mufasa del año</div><img src="https://i.postimg.cc/XqRQR7Cv/image.png" class="card-img"><div class="card-win">WING</div></div>
+                <div class="featured-card"><div class="card-cat">Más odiado</div><img src="https://i.postimg.cc/brDmV2sY/image.png" class="card-img"><div class="card-win">WING</div></div>
+                <div class="featured-card"><div class="card-cat">Más odiada</div><img src="https://i.postimg.cc/DZdvJ82X/image.png" class="card-img"><div class="card-win">CARO</div></div>
             </div>
         </div>
 
         <button class="accordion">AMOR, CARIÑO Y RESPETO</button>
         <div class="panel">
             <div class="featured-grid">
-                <div class="featured-card"><div class="card-cat">Mejor Pareja</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=COREANITO+Y+JULIETA" class="card-img"><div class="card-win">COREANITO Y JULIETA</div></div>
-                <div class="featured-card"><div class="card-cat">Más Gracioso</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MORRO" class="card-img"><div class="card-win">MORRO</div></div>
-                <div class="featured-card"><div class="card-cat">Más Graciosa</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MACA" class="card-img"><div class="card-win">MACA</div></div>
-                <div class="featured-card"><div class="card-cat">Más Linda</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=JULIETA" class="card-img"><div class="card-win">JULIETA</div></div>
-                <div class="featured-card"><div class="card-cat">Más Lindo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=AUGUSTO" class="card-img"><div class="card-win">AUGUSTO</div></div>
+                <div class="featured-card"><div class="card-cat">Mejor Pareja</div><img src="https://i.postimg.cc/wvsNS5Q8/image.png" class="card-img"><div class="card-win">COREANITO Y JULIETA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Gracioso</div><img src="https://i.postimg.cc/0jRSx6Vk/image.png" class="card-img"><div class="card-win">MORRO</div></div>
+                <div class="featured-card"><div class="card-cat">Más Graciosa</div><img src="https://i.postimg.cc/VNKSp0cJ/image.png" class="card-img"><div class="card-win">MACA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Linda</div><img src="https://i.postimg.cc/pTy9HV2j/image.png" class="card-img"><div class="card-win">JULIETA</div></div>
+                <div class="featured-card"><div class="card-cat">Más Lindo</div><img src="https://i.postimg.cc/HxjJgWpv/image.png" class="card-img"><div class="card-win">AUGUSTO</div></div>
                 <div class="featured-card"><div class="card-cat">Erizo Consuelo</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=RUSITO+ASSAD" class="card-img"><div class="card-win">RUSITO ASSAD</div></div>
                 <div class="featured-card"><div class="card-cat">Mejor Comida</div><img src="https://via.placeholder.com/400x300/111/ffd700?text=MILANESAS" class="card-img"><div class="card-win">MILANESAS</div></div>
             </div>
