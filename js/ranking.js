@@ -81,7 +81,7 @@ const awardsDB = [
     { year: 2024, name: "CANDROXZ", cat: "Mejor streamer" },
     { year: 2024, name: "MÁGICO", cat: "Mejor jugador de Haxball" },
     { year: 2024, name: "WING", cat: "Más odiado" },
-    { year: 2024, name: "RUSITO", cat: "Mejor clip (Preso)" },
+    { year: 2024, name: "RUSITO ASSAD", cat: "Mejor clip (Preso)" },
     { year: 2024, name: "RETORIKO", cat: "Mejor extranjero" },
     { year: 2024, name: "RUSITO ASSAD", cat: "Mejor personaje SAMP" },
     { year: 2024, name: "SANTA KROOS", cat: "Pajerazo" },
