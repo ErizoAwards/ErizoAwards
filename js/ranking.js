@@ -83,7 +83,7 @@ const awardsDB = [
     { year: 2024, name: "WING", cat: "Más odiado" },
     { year: 2024, name: "RUSITO", cat: "Mejor clip (Preso)" },
     { year: 2024, name: "RETORIKO", cat: "Mejor extranjero" },
-    { year: 2024, name: "MOCHILERO ASSAD", cat: "Mejor personaje SAMP" },
+    { year: 2024, name: "RUSITO ASSAD", cat: "Mejor personaje SAMP" },
     { year: 2024, name: "SANTA KROOS", cat: "Pajerazo" },
     { year: 2024, name: "SANTA KROOS", cat: "Más depresivo" },
     { year: 2024, name: "LIGA RS BOLIVIA", cat: "Peor evento" },
