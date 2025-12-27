@@ -13,16 +13,16 @@ const awardsDB = [
     { year: 2025, name: "JULIETA", cat: "Mejor integrante nuevo" },
     { year: 2025, name: "JULIETA", cat: "Mejor Pareja" },
     { year: 2025, name: "COREANITO", cat: "Mejor Pareja" },
-    { year: 2025, name: "JULIETA", cat: "Pajerazos" },
-    { year: 2025, name: "JRR", cat: "Pajerazos" },
+    { year: 2025, name: "JULIETA", cat: "Pajeraza" },
+    { year: 2025, name: "JRR", cat: "Pajerazo" },
     { year: 2025, name: "JULIETA", cat: "Más Linda" },
     { year: 2025, name: "AYOVI", cat: "Mejor Jugador PES 6" },
     { year: 2025, name: "AYOVI", cat: "Mejor Hincha NO Bover" },
     { year: 2025, name: "AYOVI", cat: "F Moment" },
     { year: 2025, name: "CARO", cat: "Mejor Rivalidad" },
     { year: 2025, name: "NAHIR", cat: "Mejor Rivalidad" },
-    { year: 2025, name: "CARO", cat: "Más Autistas" },
-    { year: 2025, name: "MORRO", cat: "Más Autistas" },
+    { year: 2025, name: "CARO", cat: "Más Autista" },
+    { year: 2025, name: "MORRO", cat: "Más Autista" },
     { year: 2025, name: "CARO", cat: "Más Odiada" },
     { year: 2025, name: "NAHIR", cat: "Mensaje Random" },
     { year: 2025, name: "NAHIR", cat: "Más Depresiva" },
@@ -44,8 +44,8 @@ const awardsDB = [
     { year: 2025, name: "NAZA", cat: "Erizo SEH al Más Homosexual" },
     { year: 2025, name: "AUGUSTO", cat: "Más Lindo" },
     { year: 2025, name: "RUSITO ASSAD", cat: "Erizo Consuelo" },
-    { year: 2025, name: "PATO", cat: "Más Fisuras" },
-    { year: 2025, name: "CANDE", cat: "Más Fisuras" },
+    { year: 2025, name: "PATO", cat: "Más Fisura" },
+    { year: 2025, name: "CANDE", cat: "Más Fisura" },
     { year: 2025, name: "ESCOPETA", cat: "Mejor Evento" },
     { year: 2025, name: "JAVIERA", cat: "Visita del Año" },
     { year: 2025, name: "SEGUNDO CASTILLO", cat: "Mejor Negro" },
@@ -71,7 +71,7 @@ const awardsDB = [
     { year: 2024, name: "AYOVI", cat: "Mejor pareja" },
     { year: 2024, name: "AUGUSTO", cat: "Más lindo" },
     { year: 2024, name: "REXONA", cat: "Más fantasma" },
-    { year: 2024, name: "AUGUSTO", cat: "Momento random (Cajero)" },
+    { year: 2024, name: "AUGUSTO", cat: "Momento random" },
     { year: 2024, name: "LUCIANA", cat: "Más linda" },
     { year: 2024, name: "RODRI", cat: "Mejor rivalidad" },
     { year: 2024, name: "TEFA", cat: "Mejor rivalidad" },
@@ -233,7 +233,11 @@ const awardsDB = [
     { year: 2019, name: "REXONA", cat: "Fantasma del año" },
     { year: 2019, name: "LA NOVIA DE PODO", cat: "Más querido (No grupo)" },
     { year: 2019, name: "ELECCIONES PRESIDENCIALES", cat: "Debate del año" },
-    { year: 2019, name: "ZETA", cat: "Momento bizarro (Alto Guiso)" },
+    
+    // CORRECCIÓN APLICADA AQUÍ:
+    { year: 2019, name: "ZETA", cat: "Momento bizarro" }, 
+    { year: 2019, name: "ALTO GUISO", cat: "Momento bizarro" },
+
     { year: 2019, name: "MORRO", cat: "Mejor jugador PES 6" },
     { year: 2019, name: "LA FIESTA DE DISFRACES", cat: "Mejor invasión" },
     { year: 2019, name: "ROMARIO", cat: "Domado del año" },
@@ -252,7 +256,7 @@ const awardsDB = [
     // ==========================================
     { year: 2018, name: "RUSITO ASSAD", cat: "Mejor Erizo" },
     { year: 2018, name: "PODOLSKI", cat: "Más lindo" },
-    { year: 2018, name: "KEV", cat: "Mejor Fantasma" },
+    { year: 2018, name: "KEV", cat: "Más Fantasma" },
     { year: 2018, name: "MORRO", cat: "Mejor Pareja" },
     { year: 2018, name: "AYOVI", cat: "Mejor Pareja" },
     { year: 2018, name: "PES 6", cat: "Mejor Juego" },
@@ -263,7 +267,7 @@ const awardsDB = [
     { year: 2018, name: "PATO", cat: "Más bizarro" },
     { year: 2018, name: "ZETA", cat: "Más odiado" },
     { year: 2018, name: "BAILEY", cat: "Más querido (No grupo)" },
-    { year: 2018, name: "MAGGIE GREENE", cat: "Manco de oro" },
+    { year: 2018, name: "MAGGIE GREENE", cat: "Peor jugador de Haxball" },
     { year: 2018, name: "WILLIAN", cat: "Más depresivo" },
     { year: 2018, name: "MORRO", cat: "Mejor jugador de PES 6" },
     { year: 2018, name: "BOCA - RIVER", cat: "Mejor debate" },
@@ -306,30 +310,30 @@ function updateRanking() {
         return;
     }
 
-    let position = 1;
+    let currentRank = 1;
     sortedRanking.forEach((item, index) => {
+        
+        // --- LÓGICA DE RANKING CORREGIDA (Salto de posiciones) ---
+        // Si no es el primero y tiene menos puntos que el anterior, el ranking es su posición real (index + 1)
+        if (index > 0 && item.total < sortedRanking[index - 1].total) {
+            currentRank = index + 1;
+        }
+        // Si tiene los mismos puntos, currentRank se mantiene igual (empate)
+
         let rowClass = "";
-        if (position === 1) rowClass = "gold-row";
-        else if (position === 2) rowClass = "silver-row";
-        else if (position === 3) rowClass = "bronze-row";
+        if (currentRank === 1) rowClass = "gold-row";
+        else if (currentRank === 2) rowClass = "silver-row";
+        else if (currentRank === 3) rowClass = "bronze-row";
 
         const row = `
             <tr class="${rowClass}">
-                <td class="rank-pos">${position}º</td>
+                <td class="rank-pos">${currentRank}º</td>
                 <td class="rank-name">${item.name}</td>
                 <td class="rank-count">${item.total}</td>
                 <td class="rank-detail">${item.details.join(", ")}</td>
             </tr>
         `;
         tbody.innerHTML += row;
-        
-        if (sortedRanking[index + 1] && sortedRanking[index + 1].total < item.total) {
-            position++;
-        } else if (sortedRanking[index + 1] && sortedRanking[index + 1].total === item.total) {
-            // Empate
-        } else {
-            position++;
-        }
     });
 }
 
