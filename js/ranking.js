@@ -206,7 +206,7 @@ const awardsDB = [
     { year: 2020, name: "EL CHOLO", cat: "Más querido (No grupo)" },
     { year: 2020, name: "RETORIKO", cat: "Mejor miembro nuevo" },
     { year: 2020, name: "KAKA", cat: "Mejor respuesta" },
-    { year: 2020, name: "ROMARIO", cat: "Más fantasma" },
+    { year: 2020, name: "PATO", cat: "Más fantasma" },
     { year: 2020, name: "KAKA", cat: "Mejor jugador Futsal x7" },
     { year: 2020, name: "KEV", cat: "Mejor jugador de RS" },
     { year: 2020, name: "KEV", cat: "Pareja del año" },
@@ -240,7 +240,7 @@ const awardsDB = [
 
     { year: 2019, name: "MORRO", cat: "Mejor jugador PES 6" },
     { year: 2019, name: "LA FIESTA DE DISFRACES", cat: "Mejor invasión" },
-    { year: 2019, name: "ROMARIO", cat: "Domado del año" },
+    { year: 2019, name: "PATO", cat: "Domado del año" },
     { year: 2019, name: "KAKA", cat: "Fichaje del año" },
     { year: 2019, name: "MAGGIE GREENE", cat: "Mejor ex miembro" },
     { year: 2019, name: "SEXO ENTRE HOMBRES", cat: "Equipo del año" },
