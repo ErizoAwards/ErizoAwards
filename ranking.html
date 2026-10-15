@@ -1,50 +1,52 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="description" content="Los integrantes que más erizos ganaron, por año o en todos los tiempos.">
-    <title>Ranking Histórico - ERIZO AWARDS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/ranking.css">
+        /* Bronce */
+        .bronze-row td { border-color: #cd7f32; background: linear-gradient(90deg, rgba(205, 127, 50, 0.1), transparent); }
+        .bronze-row .rank-pos { color: #cd7f32; }
+
+        /* Botón volver */
+        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--gold); text-decoration: none; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
+        .back-btn:hover { background: var(--gold); color: black; }
+    </style>
 </head>
 <body>
 
-    <header class="compact">
+    <header>
         <h1 class="gold-text">ERIZO RANKING</h1>
-        <p class="subtitle">Los integrantes del grupo que más erizos ganaron</p>
+        <p class="subtitle">Los integrantes que más erizos ganaron</p>
     </header>
 
-    <nav class="nav-bar" aria-label="Principal">
-        <a href="index.html" class="nav-link">INICIO</a>
-        <a href="2025.html" class="nav-link">GANADORES 2025</a>
-        <a href="ranking.html" class="nav-link" aria-current="page">RANKING HISTÓRICO</a>
-        <details class="dropdown">
-            <summary class="dropbtn">HISTORIAL ▼</summary>
-            <div class="dropdown-content"><a href="2024.html">Ganadores 2024</a><a href="2023.html">Ganadores 2023</a><a href="2022.html">Ganadores 2022</a><a href="2021.html">Ganadores 2021</a><a href="2020.html">Ganadores 2020</a><a href="2019.html">Ganadores 2019</a><a href="2018.html">Ganadores 2018</a></div>
-        </details>
-    </nav>
+    <div class="ranking-page">
+        <a href="index.html" class="back-btn">← VOLVER AL INICIO</a>
 
-    <main class="ranking-page">
-        <div class="rk-controls">
-            <div class="rk-years" id="yearFilters" role="group" aria-label="Filtrar por edición"></div>
-            <label class="rk-search">
-                <span class="sr-only">Buscar un integrante</span>
-                <input type="search" id="searchBox" placeholder="Buscar un erizo por nombre" autocomplete="off">
-            </label>
+        <div class="filters-container">
+            <select id="yearFilter" class="filter-select" onchange="updateRanking()">
+                <option value="all">Todos los tiempos</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+            </select>
         </div>
 
-        <p class="rk-summary" id="summary" aria-live="polite"></p>
-        <section class="rk-leaders" id="leaders" aria-label="Líder del ranking"></section>
-        <ol class="rk-list" id="rankingList"></ol>
-        <button type="button" class="rk-more" id="moreBtn" hidden></button>
-    </main>
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Erizo</th>
+                    <th>Total</th>
+                    <th>Premios</th>
+                </tr>
+            </thead>
+            <tbody id="rankingBody">
+                </tbody>
+        </table>
+    </div>
 
+    <script src="js/script.js"></script>
+    <script src="js/ranking.js"></script>
 
-    <script src="js/ranking.js" defer></script>
 </body>
 </html>
