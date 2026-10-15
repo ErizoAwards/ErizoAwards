@@ -1,0 +1,102 @@
+/* Ranking histórico */
+:root { --gold-light: #f3dd9b; }
+
+.ranking-page { max-width: 820px; margin: 0 auto; padding: 40px 20px 70px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ranking-page :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+
+/* Controles */
+.rk-controls { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.rk-years { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: #444 transparent; }
+.rk-pill {
+    flex: 0 0 auto; background: transparent; color: #cfcfcf;
+    border: 1px solid #3a3a3a; border-radius: 999px; padding: 8px 16px;
+    font: 600 0.85rem 'Montserrat', sans-serif; cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.rk-pill:hover { border-color: var(--gold); color: var(--gold); }
+.rk-pill[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #111; }
+.rk-search input {
+    width: 100%; box-sizing: border-box; background: #141414; color: #fff;
+    border: 1px solid #333; border-radius: 10px; padding: 12px 16px;
+    font: 400 1rem 'Montserrat', sans-serif;
+}
+.rk-search input::placeholder { color: #777; }
+.rk-search input:focus { border-color: var(--gold); outline: none; }
+.rk-summary { color: #9a9a9a; font-size: 0.9rem; margin: 0 0 22px; min-height: 1.3em; }
+
+/* Líder(es): lo más destacado de la página */
+.rk-leaders h2 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold); margin: 0 0 12px; }
+.rk-lead {
+    background: radial-gradient(circle at 15% 0%, #2b2517 0%, #121212 70%);
+    border: 2px solid var(--gold); border-radius: 18px; margin-bottom: 14px;
+    box-shadow: 0 0 36px rgba(191, 149, 63, 0.2);
+}
+.rk-lead summary {
+    list-style: none; cursor: pointer; padding: 26px 28px;
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 24px;
+}
+.rk-lead summary::-webkit-details-marker { display: none; }
+.rk-lead-name {
+    font-family: 'Cinzel', serif; font-weight: 700; line-height: 1.05;
+    font-size: clamp(2rem, 7vw, 3.4rem); overflow-wrap: anywhere;
+    background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.rk-lead-count { display: flex; flex-direction: column; align-items: flex-end; text-align: right; color: #ddd; }
+.rk-lead-count b { font-family: 'Cinzel', serif; font-size: 2.8rem; line-height: 1; color: var(--gold-light); }
+.rk-lead-count small { color: #999; font-size: 0.8rem; margin-top: 4px; }
+.rk-toggle { flex-basis: 100%; color: var(--gold); font-size: 0.82rem; font-weight: 600; }
+.rk-toggle::after { content: "Ver premios ▾"; }
+.rk-lead[open] .rk-toggle::after { content: "Ocultar premios ▴"; }
+.rk-lead .rk-detail { padding: 0 28px 24px; border-top: 1px solid #3a3320; }
+
+/* Lista: la barra de fondo es proporcional al líder */
+.rk-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rk-row { --bar: rgba(191, 149, 63, 0.22); background: #141414; border: 1px solid #262626; border-left: 4px solid #333; border-radius: 12px; overflow: hidden; }
+.rk-row.rank-2 { --bar: rgba(192, 192, 192, 0.18); border-left-color: #c0c0c0; }
+.rk-row.rank-3 { --bar: rgba(205, 127, 50, 0.22); border-left-color: #cd7f32; }
+.rk-row summary {
+    list-style: none; cursor: pointer; padding: 14px 16px;
+    display: grid; grid-template-columns: 3.2rem 1fr auto 1rem; align-items: center; gap: 10px;
+    background: linear-gradient(90deg, var(--bar) var(--w), transparent var(--w));
+}
+.rk-row summary::-webkit-details-marker { display: none; }
+.rk-row summary::after {
+    content: ""; width: 7px; height: 7px; justify-self: end;
+    border-right: 2px solid #777; border-bottom: 2px solid #777; transform: rotate(45deg); transition: transform 0.2s;
+}
+.rk-row details[open] summary::after { transform: rotate(-135deg); }
+.rk-row summary:hover { background-color: rgba(255, 255, 255, 0.03); }
+.rk-pos { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.25rem; color: #8a8a8a; }
+.rank-2 .rk-pos { color: #c0c0c0; }
+.rank-3 .rk-pos { color: #cd7f32; }
+.rk-name { font-weight: 600; font-size: 1.05rem; overflow-wrap: anywhere; }
+.rk-count { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.4rem; color: var(--gold); }
+.rk-row .rk-detail { padding: 2px 18px 16px; border-top: 1px solid #262626; }
+
+/* Premios de cada uno, agrupados por edición */
+.rk-year { display: grid; grid-template-columns: 3.2rem 1fr; gap: 6px 12px; margin-top: 12px; }
+.rk-year.single { display: block; }
+.rk-year-label { margin: 3px 0 0; font-family: 'Cinzel', serif; font-weight: 700; color: var(--gold); }
+.rk-year ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.rk-year li { font-size: 0.78rem; color: #ddd; background: #1f1f1f; border: 1px solid #333; border-radius: 999px; padding: 4px 10px; }
+
+.rk-more {
+    display: block; margin: 22px auto 0; background: transparent; color: var(--gold);
+    border: 1px solid var(--gold); border-radius: 8px; padding: 10px 22px;
+    font: 600 0.9rem 'Montserrat', sans-serif; cursor: pointer; transition: background 0.2s, color 0.2s;
+}
+.rk-more:hover { background: var(--gold); color: #000; }
+.rk-empty { color: #9a9a9a; text-align: center; padding: 30px 10px; }
+
+@media (max-width: 600px) {
+    .ranking-page { padding: 25px 12px 50px; }
+    .rk-lead summary { padding: 20px 18px; }
+    .rk-lead-count { align-items: flex-start; text-align: left; }
+    .rk-lead-count b { font-size: 2.2rem; }
+    .rk-lead .rk-detail { padding: 0 18px 20px; }
+    .rk-row summary { grid-template-columns: 2.6rem 1fr auto 0.8rem; gap: 8px; padding: 12px; }
+    .rk-pos { font-size: 1.05rem; }
+    .rk-name { font-size: 0.95rem; }
+    .rk-year { grid-template-columns: 1fr; }
+}
