@@ -52,7 +52,8 @@ const awardsDB = [
     { year: 2025, name: "ROJAS WALEN", cat: "Más odiado (No grupo)" },
     { year: 2025, name: "WINGSITO ASSAD", cat: "Más querido (No grupo)" },
     { year: 2025, name: "PLATO", cat: "Mejor Juego" },
-    { year: 2025, name: "BOCA VS ALIANZA", cat: "Mejor Hatewatch" },
+    { year: 2025, name: "BOCA JUNIORS", cat: "Mejor Hatewatch" },
+    { year: 2025, name: "ALIANZA LIMA", cat: "Mejor Hatewatch" },
     { year: 2025, name: "MILANESAS", cat: "Mejor Comida" },
 
     // ==========================================
@@ -270,7 +271,8 @@ const awardsDB = [
     { year: 2018, name: "MAGGIE GREENE", cat: "Peor jugador de Haxball" },
     { year: 2018, name: "WILLIAN", cat: "Más depresivo" },
     { year: 2018, name: "MORRO", cat: "Mejor jugador de PES 6" },
-    { year: 2018, name: "BOCA - RIVER", cat: "Mejor debate" },
+    { year: 2018, name: "BOCA JUNIORS", cat: "Mejor debate" },
+    { year: 2018, name: "RIVER PLATE", cat: "Mejor debate" },
     { year: 2018, name: "RUSITO ASSAD", cat: "Mejor sticker" },
     { year: 2018, name: "SI BUENO QUIEN TIENE HAMBRE", cat: "Mejor meme" },
     { year: 2018, name: "SEÑOR X", cat: "Mejor spamero" },
@@ -278,63 +280,120 @@ const awardsDB = [
     { year: 2018, name: "MORRO", cat: "Mejor Integrante" }
 ];
 
-// --- FUNCIÓN DE CÁLCULO ---
-function updateRanking() {
-    const yearVal = document.getElementById("yearFilter").value;
-    const tbody = document.getElementById("rankingBody");
-    
-    tbody.innerHTML = ""; 
+// =====================================================================
+//  RANKING (la lógica lee awardsDB: para sumar premios solo hay que
+//  agregar líneas arriba; los botones de año se generan solos)
+// =====================================================================
+const LIMIT = 15;                       // filas visibles antes de "Mostrar todos"
+const state = { year: "all", query: "", showAll: false };
 
-    // 1. Filtrar solo por año
-    const filteredData = awardsDB.filter(item => {
-        return (yearVal === "all") || (item.year == yearVal);
-    });
+const $ = (id) => document.getElementById(id);
+const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
 
-    // 2. Agrupar
-    const counts = {};
-    filteredData.forEach(item => {
+const years = [...new Set(awardsDB.map((i) => i.year))].sort((a, b) => b - a);
+
+// Agrupa por nombre y calcula la posición (los empates comparten lugar)
+function buildRanking(year) {
+    const map = new Map();
+    awardsDB.forEach((item) => {
+        if (year !== "all" && String(item.year) !== year) return;
         const name = item.name.toUpperCase();
-        if (!counts[name]) counts[name] = { total: 0, details: [] };
-        counts[name].total++;
-        counts[name].details.push(`${item.cat} (${item.year})`);
+        if (!map.has(name)) map.set(name, { name, total: 0, byYear: new Map() });
+        const e = map.get(name);
+        e.total++;
+        if (!e.byYear.has(item.year)) e.byYear.set(item.year, []);
+        e.byYear.get(item.year).push(item.cat);
     });
+    const list = [...map.values()].sort((a, b) => b.total - a.total || a.name.localeCompare(b.name, "es"));
+    let rank = 1;
+    list.forEach((e, i) => {
+        if (i > 0 && e.total < list[i - 1].total) rank = i + 1;
+        e.rank = rank;
+    });
+    return list;
+}
 
-    // 3. Ordenar
-    const sortedRanking = Object.keys(counts).map(key => {
-        return { name: key, ...counts[key] };
-    }).sort((a, b) => b.total - a.total);
+function detailHtml(e) {
+    const single = state.year !== "all";
+    return [...e.byYear.keys()].sort((a, b) => b - a).map((y) =>
+        `<div class="rk-year${single ? " single" : ""}">` +
+        (single ? "" : `<p class="rk-year-label">${y}</p>`) +
+        `<ul>${e.byYear.get(y).map((c) => `<li>${esc(c)}</li>`).join("")}</ul></div>`
+    ).join("");
+}
 
-    // 4. Mostrar
-    if (sortedRanking.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='4' style='text-align:center'>No hay resultados.</td></tr>";
+function leaderHtml(e) {
+    const n = e.byYear.size;
+    const sub = state.year === "all" ? `<small>en ${plural(n, "edición", "ediciones")}</small>` : "";
+    return `<details class="rk-lead"><summary>
+        <span class="rk-lead-name">${esc(e.name)}</span>
+        <span class="rk-lead-count"><b>${e.total}</b>${e.total === 1 ? "erizo" : "erizos"}${sub}</span>
+        <span class="rk-toggle"></span>
+    </summary><div class="rk-detail">${detailHtml(e)}</div></details>`;
+}
+
+function rowHtml(e, max) {
+    const w = Math.max(4, Math.round((e.total / max) * 100));
+    const medal = e.rank <= 3 ? ` rank-${e.rank}` : "";
+    return `<li class="rk-row${medal}" style="--w:${w}%"><details><summary>
+        <span class="rk-pos">${e.rank}º</span>
+        <span class="rk-name">${esc(e.name)}</span>
+        <span class="rk-count">${e.total}</span>
+    </summary><div class="rk-detail">${detailHtml(e)}</div></details></li>`;
+}
+
+function render() {
+    const ranked = buildRanking(state.year);
+    const max = ranked[0].total;
+    const q = norm(state.query.trim());
+    const leadersBox = $("leaders"), list = $("rankingList"), more = $("moreBtn");
+
+    document.querySelectorAll(".rk-pill").forEach((b) =>
+        b.setAttribute("aria-pressed", String(b.dataset.year === state.year)));
+
+    const totalAwards = ranked.reduce((s, e) => s + e.total, 0);
+    const where = state.year === "all" ? `en ${plural(years.length, "edición", "ediciones")}` : `en ${state.year}`;
+
+    if (q) {   // búsqueda: lista plana con la posición real de cada uno
+        const found = ranked.filter((e) => norm(e.name).includes(q));
+        leadersBox.innerHTML = "";
+        more.hidden = true;
+        $("summary").textContent = found.length
+            ? `${plural(found.length, "resultado", "resultados")} para «${state.query.trim()}».`
+            : "";
+        list.innerHTML = found.length
+            ? found.map((e) => rowHtml(e, max)).join("")
+            : `<li class="rk-empty">Nadie coincide con «${esc(state.query.trim())}». Probá con otro nombre o revisá el filtro de año.</li>`;
         return;
     }
 
-    let currentRank = 1;
-    sortedRanking.forEach((item, index) => {
-        
-        // --- LÓGICA DE RANKING CORREGIDA (Salto de posiciones) ---
-        // Si no es el primero y tiene menos puntos que el anterior, el ranking es su posición real (index + 1)
-        if (index > 0 && item.total < sortedRanking[index - 1].total) {
-            currentRank = index + 1;
-        }
-        // Si tiene los mismos puntos, currentRank se mantiene igual (empate)
+    $("summary").textContent = `Se entregaron ${plural(totalAwards, "premio", "premios")} entre ${plural(ranked.length, "ganador", "ganadores")} ${where}.`;
 
-        let rowClass = "";
-        if (currentRank === 1) rowClass = "gold-row";
-        else if (currentRank === 2) rowClass = "silver-row";
-        else if (currentRank === 3) rowClass = "bronze-row";
+    const leaders = ranked.filter((e) => e.rank === 1);
+    const rest = ranked.filter((e) => e.rank > 1);
+    const titulo = (leaders.length > 1 ? "Líderes" : "Líder") + (state.year === "all" ? " de todos los tiempos" : ` de ${state.year}`);
+    leadersBox.innerHTML = `<h2>${titulo}${leaders.length > 1 ? " (empatados)" : ""}</h2>` + leaders.map(leaderHtml).join("");
 
-        const row = `
-            <tr class="${rowClass}">
-                <td class="rank-pos">${currentRank}º</td>
-                <td class="rank-name">${item.name}</td>
-                <td class="rank-count">${item.total}</td>
-                <td class="rank-detail">${item.details.join(", ")}</td>
-            </tr>
-        `;
-        tbody.innerHTML += row;
-    });
+    const visible = state.showAll ? rest : rest.slice(0, LIMIT);
+    list.innerHTML = visible.map((e) => rowHtml(e, max)).join("");
+    more.hidden = rest.length <= LIMIT;
+    more.textContent = state.showAll ? "Mostrar menos" : `Mostrar los ${rest.length - LIMIT} restantes`;
 }
 
-window.onload = updateRanking;
+// ---- inicio ----
+$("yearFilters").innerHTML = ["all", ...years].map((y) =>
+    `<button type="button" class="rk-pill" data-year="${y}">${y === "all" ? "Todos los tiempos" : y}</button>`).join("");
+
+$("yearFilters").addEventListener("click", (ev) => {
+    const b = ev.target.closest(".rk-pill");
+    if (!b) return;
+    state.year = b.dataset.year;
+    state.showAll = false;
+    render();
+});
+$("searchBox").addEventListener("input", (ev) => { state.query = ev.target.value; render(); });
+$("moreBtn").addEventListener("click", () => { state.showAll = !state.showAll; render(); });
+
+render();   // el script se carga con defer: el DOM ya está listo
