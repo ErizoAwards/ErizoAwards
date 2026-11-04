@@ -1,5 +1,48 @@
+
+:root {
+    --gold: #bf953f;
+    --gold-gradient: linear-gradient(to bottom, #cf9d3e, #ffefbb, #bf953f, #fcf6ba, #b38728);
+    --dark: #0a0a0a;
+    --card-bg: #161616;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+header {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+    border-bottom: 2px solid var(--gold);
+}
+
+.gold-text {
+    font-family: 'Cinzel', serif;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+}
+
+.subtitle {
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
 /* ========================================
-   ERIZO AWARDS - MENU RETRO 2000s
+   MENU RETRO AÑOS 2000
 ======================================== */
 
 .nav-bar {
@@ -35,7 +78,6 @@
 
 .nav-link {
     display: inline-block;
-
     padding: 11px 17px;
 
     color: #ffffff;
@@ -62,7 +104,6 @@
         2px 3px 4px rgba(0, 0, 0, 0.4);
 
     text-shadow: 1px 1px 2px #003366;
-
     transition: all 0.2s ease;
 }
 
@@ -94,7 +135,6 @@
     padding: 11px 18px;
 
     color: #ffffff;
-
     font-family: Tahoma, Verdana, sans-serif;
     font-size: 13px;
     font-weight: bold;
@@ -136,8 +176,8 @@
 
 .dropdown-content {
     display: none;
-
     position: absolute;
+
     top: 100%;
     left: 0;
 
@@ -169,6 +209,7 @@
     padding: 10px 8px;
 
     color: #ffffff;
+
     background: linear-gradient(
         to bottom,
         #438ed1,
@@ -188,7 +229,6 @@
 
 .dropdown-content a {
     display: block;
-
     padding: 10px 12px;
 
     color: #064b9b;
@@ -199,7 +239,6 @@
     font-weight: bold;
 
     border-bottom: 1px solid #cccccc;
-
     transition: all 0.15s ease;
 }
 
@@ -219,10 +258,107 @@
     border-bottom: none;
 }
 
-/* ADAPTACION PARA CELULARES */
+/* ========================================
+   FORMULARIO
+======================================== */
+
+.vote-container {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid var(--gold);
+    margin: 20px auto;
+    width: 100%;
+}
+
+iframe {
+    width: 100%;
+    border: none;
+}
+
+/* TITULOS */
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 50px;
+}
+
+/* HISTORIAL */
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+/* TARJETAS */
+
+.year-card {
+    background: var(--card-bg);
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+    cursor: default;
+}
+
+.year-card:hover {
+    transform: scale(1.1);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(191, 149, 63, 0.4);
+    z-index: 10;
+}
+
+/* IMAGENES DE GANADORES */
+
+.winner-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.winner-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* REPRODUCTOR DE MUSICA */
+
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+#musicBtn {
+    background: var(--gold);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* ========================================
+   ADAPTACION PARA CELULARES
+======================================== */
 
 @media (max-width: 600px) {
-
     .nav-bar {
         gap: 8px;
         padding: 10px 5px;
@@ -237,5 +373,4 @@
     .dropdown-content {
         min-width: 190px;
     }
-
 }
