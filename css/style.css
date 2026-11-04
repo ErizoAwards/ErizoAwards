@@ -148,7 +148,6 @@ header {
 
     border: 2px solid #ffffff;
     border-radius: 5px;
-
     cursor: pointer;
 
     text-shadow: 1px 1px 2px #743600;
@@ -177,7 +176,6 @@ header {
 .dropdown-content {
     display: none;
     position: absolute;
-
     top: 100%;
     left: 0;
 
@@ -194,7 +192,6 @@ header {
     border-radius: 4px;
 
     box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.5);
-
     z-index: 1001;
 }
 
@@ -202,30 +199,6 @@ header {
 .dropdown:focus-within .dropdown-content {
     display: block;
 }
-
-/* TITULO DEL DESPLEGABLE */
-
-.dropdown-title {
-    padding: 10px 8px;
-
-    color: #ffffff;
-
-    background: linear-gradient(
-        to bottom,
-        #438ed1,
-        #124d91
-    );
-
-    font-family: Tahoma, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
-
-    border: 1px solid #ffffff;
-    margin-bottom: 4px;
-}
-
-/* ENLACES DEL DESPLEGABLE */
 
 .dropdown-content a {
     display: block;
@@ -354,9 +327,7 @@ iframe {
     cursor: pointer;
 }
 
-/* ========================================
-   ADAPTACION PARA CELULARES
-======================================== */
+/* ADAPTACION PARA CELULARES */
 
 @media (max-width: 600px) {
     .nav-bar {
